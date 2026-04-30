@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consuelo Mestanza · Wedding Planner en Lima, Perú</title>
+  <meta name="description" content="Consuelo Mestanza, Wedding Planner profesional en Lima, Perú. Organizo bodas únicas, íntimas y llenas de amor. Coordinación total, decoración y experiencias inolvidables." />
+  <meta name="keywords" content="wedding planner Lima, organizadora de bodas Lima, matrimonios Lima Perú, Consuelo Mestanza, boda perfecta, wedding planner Perú" />
+  <meta name="author" content="Consuelo Mestanza" />
+  <meta property="og:title" content="Consuelo Mestanza · Wedding Planner Lima" />
+  <meta property="og:description" content="Organizo la boda de tus sueños en Lima, Perú. Cada detalle con amor y precisión." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_PE" />
+  <link rel="canonical" href="https://consuelomestanza.pe" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --rose:       #E8446A;
+      --rose-light: #F2698A;
+      --rose-dark:  #C4325A;
+      --coral:      #FF7B5C;
+      --gold:       #D4A853;
+      --gold-light: #EFC97A;
+      --cream:      #FFF8F4;
+      --white:      #FFFFFF;
+      --ink:        #1A1018;
+      --ink-soft:   #3D2B38;
+      --muted:      #9A7F8E;
+      --line:       rgba(212,168,83,.25);
+
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body:    'Jost', sans-serif;
+
+      --ease: cubic-bezier(.16,1,.3,1);
+      --t: .6s;
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ── CUSTOM CURSOR ── */
+    .cursor {
+      position: fixed; top: 0; left: 0; z-index: 9999;
+      width: 12px; height: 12px;
+      background: var(--rose);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%,-50%);
+      transition: transform .15s var(--ease), width .3s, height .3s, background .3s;
+      mix-blend-mode: multiply;
+    }
+    .cursor-ring {
+      position: fixed; top: 0; left: 0; z-index: 9998;
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--rose);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%,-50%);
+      transition: transform .4s var(--ease), width .4s, height .4s, opacity .3s;
+      opacity: .6;
+    }
+    .cursor.hover { width: 20px; height: 20px; background: var(--gold); }
+    .cursor-ring.hover { width: 56px; height: 56px; opacity: .3; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 5%;
+      transition: background .5s, backdrop-filter .5s, box-shadow .5s;
+    }
+    nav.scrolled {
+      background: rgba(255,248,244,.88);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 2px 30px rgba(232,68,106,.08);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: .04em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--rose); }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+      position: relative;
+      transition: color .3s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--rose);
+      transition: width .35s var(--ease);
+    }
+    .nav-links a:hover { color: var(--rose); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: var(--rose);
+      color: var(--white) !important;
+      padding: .5rem 1.4rem !important;
+      border-radius: 50px;
+      transition: background .3s, transform .2s !important;
+    }
+    .nav-cta:hover { background: var(--rose-dark) !important; transform: translateY(-1px); }
+    .nav-cta::after { display: none !important; }
+    .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .burger span { display: block; width: 24px; height: 2px; background: var(--ink); border-radius: 2px; transition: .3s; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0 5%;
+      padding-top: 80px;
+      gap: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 100% 50%, rgba(232,68,106,.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(212,168,83,.1) 0%, transparent 60%);
+    }
+    .hero-petals {
+      position: absolute; inset: 0; z-index: 0; overflow: hidden;
+    }
+    .petal {
+      position: absolute;
+      width: 8px; height: 12px;
+      background: var(--rose-light);
+      border-radius: 50% 0 50% 0;
+      opacity: 0;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0%   { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+      10%  { opacity: .5; }
+      90%  { opacity: .3; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .hero-left { position: relative; z-index: 1; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: rgba(232,68,106,.1);
+      border: 1px solid rgba(232,68,106,.25);
+      color: var(--rose);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: .4rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.8rem;
+      animation: fadeUp .8s var(--ease) both;
+    }
+    .hero-tag::before { content: '✦'; font-size: .7rem; }
+
+    .hero-h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      animation: fadeUp .9s .1s var(--ease) both;
+    }
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--rose);
+      font-weight: 400;
+    }
+    .hero-h1 .line2 {
+      display: block;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 1s .2s var(--ease) both;
+    }
+
+    .hero-actions {
+      display: flex; align-items: center; gap: 1.5rem;
+      animation: fadeUp 1s .3s var(--ease) both;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: var(--rose);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2.2rem;
+      border-radius: 50px;
+      transition: background .3s, transform .25s, box-shadow .3s;
+      box-shadow: 0 8px 30px rgba(232,68,106,.35);
+    }
+    .btn-primary:hover {
+      background: var(--rose-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(232,68,106,.45);
+    }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      color: var(--ink-soft);
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color .3s, gap .3s;
+    }
+    .btn-secondary:hover { color: var(--rose); gap: .8rem; }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem;
+      margin-top: 3.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+      animation: fadeUp 1s .4s var(--ease) both;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 500;
+      color: var(--rose);
+      line-height: 1;
+    }
+    .stat-num span { font-size: 1.4rem; }
+    .stat-label {
+      font-size: .75rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-top: .3rem;
+    }
+
+    /* Hero Right – Visual */
+    .hero-right {
+      position: relative; z-index: 1;
+      display: flex; justify-content: center; align-items: center;
+      animation: fadeIn 1.2s .3s var(--ease) both;
+    }
+    .hero-frame {
+      position: relative;
+      width: min(420px, 90%);
+      aspect-ratio: 3/4;
+    }
+    .hero-frame-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 200px 200px 0 0;
+      filter: saturate(1.05);
+    }
+    .hero-frame-bg {
+      position: absolute;
+      inset: -16px -16px 16px 16px;
+      border-radius: 200px 200px 0 0;
+      background: linear-gradient(135deg, var(--rose-light), var(--gold-light));
+      z-index: -1;
+      opacity: .35;
+    }
+    .hero-frame-pill {
+      position: absolute;
+      bottom: -20px; left: 50%; transform: translateX(-50%);
+      background: var(--white);
+      border-radius: 50px;
+      padding: .9rem 1.6rem;
+      display: flex; align-items: center; gap: .8rem;
+      box-shadow: 0 12px 40px rgba(26,16,24,.12);
+      white-space: nowrap;
+    }
+    .pill-icon { font-size: 1.5rem; }
+    .pill-text { font-size: .78rem; font-weight: 500; color: var(--ink-soft); line-height: 1.3; }
+    .pill-text strong { display: block; color: var(--rose); font-size: .88rem; }
+    .floating-badge {
+      position: absolute; top: 12%; right: -24px;
+      background: var(--gold);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      font-style: italic;
+      padding: 1rem 1.2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(212,168,83,.4);
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ── SECTIONS BASE ── */
+    section { padding: 6rem 5%; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      color: var(--rose);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .section-tag::before, .section-tag::after { content: '—'; opacity: .5; }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.12;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+    }
+    .section-title em { font-style: italic; color: var(--rose); }
+    .section-body {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 24px;
+      display: block;
+    }
+    .about-img-accent {
+      position: absolute;
+      bottom: -2rem; right: -2rem;
+      width: 45%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 5px solid var(--cream);
+      box-shadow: 0 12px 40px rgba(26,16,24,.15);
+    }
+    .about-img-quote {
+      position: absolute;
+      top: -1.5rem; left: -1.5rem;
+      background: var(--rose);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 3rem;
+      line-height: 1;
+      width: 60px; height: 60px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+    .about-text { position: relative; }
+    .about-signature {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-style: italic;
+      color: var(--gold);
+      margin: 1.5rem 0 .5rem;
+    }
+    .about-role {
+      font-size: .78rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    .about-values {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .val-item {
+      display: flex; gap: .8rem; align-items: flex-start;
+    }
+    .val-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: rgba(232,68,106,.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .val-text { font-size: .85rem; color: var(--ink-soft); line-height: 1.5; font-weight: 400; }
+    .val-text strong { display: block; font-weight: 600; margin-bottom: .2rem; color: var(--ink); }
+
+    /* ── SERVICES ── */
+    #servicios {
+      background: var(--ink);
+      border-radius: 32px;
+      margin: 0 3%;
+      position: relative;
+      overflow: hidden;
+    }
+    .services-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 50% 70% at 80% 20%, rgba(232,68,106,.2) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(212,168,83,.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    #servicios .section-title { color: var(--white); }
+    #servicios .section-body { color: rgba(255,255,255,.55); }
+    .services-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 4rem;
+      position: relative; z-index: 1;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      position: relative; z-index: 1;
+    }
+    .service-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px;
+      padding: 2.2rem;
+      transition: background .4s, border-color .4s, transform .4s var(--ease);
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(232,68,106,.15), transparent);
+      opacity: 0;
+      transition: opacity .4s;
+    }
+    .service-card:hover { background: rgba(255,255,255,.1); border-color: rgba(232,68,106,.4); transform: translateY(-6px); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    .service-num {
+      position: absolute; top: 1.2rem; right: 1.5rem;
+      font-family: var(--font-display);
+      font-size: .85rem;
+      color: rgba(255,255,255,.2);
+      font-weight: 500;
+    }
+    .service-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: .8rem;
+      line-height: 1.2;
+    }
+    .service-desc {
+      font-size: .88rem;
+      font-weight: 300;
+      color: rgba(255,255,255,.55);
+      line-height: 1.7;
+    }
+    .service-link {
+      display: inline-flex; align-items: center; gap: .4rem;
+      color: var(--rose-light);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-top: 1.4rem;
+      transition: gap .3s;
+    }
+    .service-link:hover { gap: .7rem; }
+
+    /* ── HOW IT WORKS ── */
+    #proceso {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    #proceso .section-body { margin: 0 auto; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 36px; left: 12%; right: 12%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--rose), var(--gold), var(--rose));
+      opacity: .35;
+    }
+    .step {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 1rem;
+    }
+    .step-circle {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--rose), var(--coral));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--white);
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 8px 30px rgba(232,68,106,.3);
+      transition: transform .35s var(--ease), box-shadow .35s;
+    }
+    .step:hover .step-circle { transform: scale(1.12); box-shadow: 0 14px 40px rgba(232,68,106,.45); }
+    .step-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .step-desc {
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── GALLERY ── */
+    #galeria { padding: 5rem 0; overflow: hidden; }
+    #galeria .inner { padding: 0 5%; }
+    .gallery-marquee {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 3rem;
+      animation: marquee 30s linear infinite;
+      width: max-content;
+    }
+    .gallery-marquee:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .gallery-item {
+      flex-shrink: 0;
+      width: 280px; height: 360px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .6s var(--ease);
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-item-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1.5rem 1rem 1rem;
+      background: linear-gradient(to top, rgba(26,16,24,.7), transparent);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-style: italic;
+      opacity: 0;
+      transition: opacity .35s;
+    }
+    .gallery-item:hover .gallery-item-label { opacity: 1; }
+
+    /* Gallery placeholder colors */
+    .gp-1  { background: linear-gradient(135deg,#E8446A,#FF7B5C); }
+    .gp-2  { background: linear-gradient(135deg,#D4A853,#EFC97A); }
+    .gp-3  { background: linear-gradient(135deg,#C4325A,#E8446A); }
+    .gp-4  { background: linear-gradient(135deg,#FF7B5C,#D4A853); }
+    .gp-5  { background: linear-gradient(135deg,#3D2B38,#C4325A); }
+    .gp-6  { background: linear-gradient(135deg,#EFC97A,#FF7B5C); }
+    .gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-size: 3rem;
+    }
+    .gallery-placeholder p {
+      font-family: var(--font-display);
+      font-style: italic;
+      color: rgba(255,255,255,.85);
+      font-size: 1rem;
+      margin-top: .5rem;
+    }
+
+    /* ── TESTIMONIALS ── */
+    #testimonios { background: rgba(232,68,106,.04); }
+    .testimonios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .testi-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 4px 30px rgba(26,16,24,.06);
+      transition: transform .35s var(--ease), box-shadow .35s;
+      position: relative;
+    }
+    .testi-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(26,16,24,.1); }
+    .testi-stars {
+      color: var(--gold);
+      font-size: 1rem;
+      letter-spacing: .15rem;
+      margin-bottom: 1rem;
+    }
+    .testi-text {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--ink-soft);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+    .testi-author {
+      display: flex; align-items: center; gap: .8rem;
+    }
+    .testi-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .testi-name { font-size: .88rem; font-weight: 600; color: var(--ink); }
+    .testi-loc  { font-size: .78rem; color: var(--muted); }
+
+    /* ── PACKAGES ── */
+    #paquetes { text-align: center; }
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+      align-items: start;
+    }
+    .pkg-card {
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      border: 1.5px solid var(--line);
+      transition: transform .35s var(--ease), box-shadow .35s, border-color .35s;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+    }
+    .pkg-card:hover { transform: translateY(-6px); box-shadow: 0 16px 50px rgba(232,68,106,.12); border-color: var(--rose); }
+    .pkg-card.featured {
+      background: linear-gradient(135deg, var(--rose), var(--coral));
+      border-color: transparent;
+      color: var(--white);
+    }
+    .pkg-card.featured:hover { box-shadow: 0 20px 60px rgba(232,68,106,.45); }
+    .pkg-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.25);
+      color: var(--white);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: .3rem .9rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+    .pkg-name {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-bottom: .4rem;
+    }
+    .pkg-card.featured .pkg-name { color: var(--white); }
+    .pkg-price {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: var(--rose);
+      margin-bottom: .3rem;
+    }
+    .pkg-card.featured .pkg-price { color: rgba(255,255,255,.9); }
+    .pkg-since { font-size: .78rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .pkg-card.featured .pkg-since { color: rgba(255,255,255,.65); }
+    .pkg-divider { height: 1px; background: var(--line); margin: 1.5rem 0; }
+    .pkg-card.featured .pkg-divider { background: rgba(255,255,255,.25); }
+    .pkg-features { list-style: none; display: flex; flex-direction: column; gap: .8rem; }
+    .pkg-features li {
+      display: flex; align-items: flex-start; gap: .6rem;
+      font-size: .88rem; color: var(--ink-soft); line-height: 1.45;
+    }
+    .pkg-card.featured .pkg-features li { color: rgba(255,255,255,.85); }
+    .pkg-check { color: var(--rose); font-weight: 700; flex-shrink: 0; margin-top: .05rem; }
+    .pkg-card.featured .pkg-check { color: rgba(255,255,255,.9); }
+    .pkg-cta {
+      display: block; text-align: center;
+      margin-top: 2rem;
+      background: var(--rose);
+      color: var(--white);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem;
+      border-radius: 12px;
+      transition: background .3s, transform .25s;
+    }
+    .pkg-cta:hover { background: var(--rose-dark); transform: translateY(-2px); }
+    .pkg-card.featured .pkg-cta {
+      background: var(--white);
+      color: var(--rose);
+    }
+    .pkg-card.featured .pkg-cta:hover { background: rgba(255,255,255,.9); }
+
+    /* ── CONTACT ── */
+    #contacto {
+      background: var(--ink);
+      border-radius: 32px;
+      margin: 0 3%;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .contact-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 50% 0%, rgba(232,68,106,.25) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 50% 100%, rgba(212,168,83,.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    #contacto .section-title { color: var(--white); }
+    #contacto .section-body { color: rgba(255,255,255,.55); margin: 0 auto 3rem; }
+    .contact-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      text-align: left;
+    }
+    .cf-full { grid-column: 1 / -1; }
+    .cf-label {
+      display: block;
+      font-size: .73rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+      margin-bottom: .5rem;
+    }
+    .cf-input, .cf-select, .cf-textarea {
+      width: 100%;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 12px;
+      padding: .9rem 1.1rem;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: .92rem;
+      outline: none;
+      transition: border-color .3s, background .3s;
+    }
+    .cf-input::placeholder, .cf-textarea::placeholder { color: rgba(255,255,255,.3); }
+    .cf-input:focus, .cf-select:focus, .cf-textarea:focus {
+      border-color: var(--rose);
+      background: rgba(255,255,255,.1);
+    }
+    .cf-select option { background: var(--ink); }
+    .cf-textarea { resize: vertical; min-height: 110px; }
+    .contact-cta {
+      display: block;
+      width: 100%;
+      background: var(--rose);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: .88rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border: none;
+      padding: 1.1rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background .3s, transform .25s, box-shadow .3s;
+      box-shadow: 0 8px 30px rgba(232,68,106,.35);
+      margin-top: .5rem;
+    }
+    .contact-cta:hover { background: var(--rose-dark); transform: translateY(-2px); box-shadow: 0 14px 40px rgba(232,68,106,.5); }
+    .contact-channels {
+      display: flex; justify-content: center; gap: 2rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,.1);
+      flex-wrap: wrap;
+    }
+    .channel {
+      display: flex; align-items: center; gap: .6rem;
+      color: rgba(255,255,255,.7);
+      font-size: .85rem;
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .channel:hover { color: var(--rose-light); }
+    .channel-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      transition: background .3s;
+    }
+    .channel:hover .channel-icon { background: rgba(232,68,106,.3); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2.5rem 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .footer-logo span { color: var(--rose); }
+    .footer-copy { font-size: .78rem; color: var(--muted); }
+    .footer-love { font-size: .78rem; color: var(--muted); }
+    .footer-love span { color: var(--rose); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--rose); border-radius: 10px; }
+
+    /* ── MOBILE NAV ── */
+    @media (max-width: 900px) {
+      .burger { display: flex; }
+      .nav-links {
+        position: fixed; inset: 0; top: 0;
+        background: var(--cream);
+        flex-direction: column;
+        align-items: center; justify-content: center;
+        gap: 2.5rem;
+        transform: translateX(100%);
+        transition: transform .5s var(--ease);
+        z-index: 90;
+      }
+      .nav-links.open { transform: none; }
+      .nav-links a { font-size: 1rem; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .packages-grid { grid-template-columns: 1fr; max-width: 480px; margin: 3.5rem auto 0; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+    }
+    @media (max-width: 768px) {
+      #hero { grid-template-columns: 1fr; text-align: center; padding-top: 100px; }
+      .hero-right { display: none; }
+      .hero-sub, .section-body { max-width: 100%; }
+      .hero-actions { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      #about { grid-template-columns: 1fr; gap: 3rem; }
+      .about-img-accent { display: none; }
+      .about-values { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonios-grid { grid-template-columns: 1fr; }
+      .contact-form { grid-template-columns: 1fr; }
+      .cf-full { grid-column: 1; }
+      #servicios, #contacto { margin: 0 1%; border-radius: 20px; }
+      .process-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a class="nav-logo" href="#hero">Consuelo <span>Mestanza</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">Sobre mí</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#paquetes">Paquetes</a></li>
+      <li><a href="#contacto" class="nav-cta">Contáctame</a></li>
+    </ul>
+    <div class="burger" id="burger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-petals" id="petals"></div>
+
+    <div class="hero-left">
+      <div class="hero-tag">Wedding Planner · Lima, Perú</div>
+      <h1 class="hero-h1">
+        Tu boda,<br>
+        <em>exactamente</em>
+        <span class="line2">como la soñaste</span>
+      </h1>
+      <p class="hero-sub">
+        Hola 🤍 Soy Consuelo Mestanza. Organizo bodas únicas y llenas de amor en Lima y todo el Perú, cuidando cada detalle para que solo tengas que disfrutar.
+      </p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-primary">Agendar consulta gratis →</a>
+        <a href="#galeria" class="btn-secondary">Ver bodas 💍</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">150<span>+</span></div>
+          <div class="stat-label">Bodas realizadas</div>
+        </div>
+        <div>
+          <div class="stat-num">8<span>+</span></div>
+          <div class="stat-label">Años de experiencia</div>
+        </div>
+        <div>
+          <div class="stat-num">98<span>%</span></div>
+          <div class="stat-label">Clientes felices</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-frame">
+        <div class="hero-frame-bg"></div>
+        <div class="hero-frame-img" style="background:linear-gradient(160deg,#f2698a 0%,#d4a853 60%,#ff7b5c 100%); display:flex; align-items:center; justify-content:center; border-radius:200px 200px 0 0;">
+          <span style="font-size:6rem;">👰‍♀️</span>
+        </div>
+        <div class="hero-frame-pill">
+          <span class="pill-icon">💍</span>
+          <div class="pill-text">
+            <strong>¡Disponible en 2025!</strong>
+            Pocas fechas disponibles
+          </div>
+        </div>
+        <div class="floating-badge">Lima ✨</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="about-img-wrap reveal">
+      <div class="about-img-main" style="background:linear-gradient(135deg,#E8446A 0%,#D4A853 50%,#FF7B5C 100%); display:flex; align-items:center; justify-content:center; font-size:5rem; border-radius:24px;">💐</div>
+      <div class="about-img-quote">"</div>
+    </div>
+    <div class="about-text">
+      <div class="section-tag">Sobre mí</div>
+      <div class="about-signature">Consuelo Mestanza</div>
+      <div class="about-role">Wedding Planner Profesional · Lima, Perú</div>
+      <p class="section-body">
+        Creo en que cada historia de amor merece una celebración perfecta. Con más de 8 años organizando bodas en Lima y a lo largo del Perú, me especializo en transformar tu visión en una realidad emocionante, cuidando cada flor, cada momento y cada sonrisa.
+      </p>
+      <p class="section-body" style="margin-top:1rem;">
+        Mi enfoque combina la planificación meticulosa con la creatividad necesaria para que tu boda sea única, fluida y absolutamente tuya.
+      </p>
+      <div class="about-values">
+        <div class="val-item reveal reveal-delay-1">
+          <div class="val-icon">🎯</div>
+          <div class="val-text"><strong>Precisión total</strong>Cada detalle planeado con anticipación.</div>
+        </div>
+        <div class="val-item reveal reveal-delay-2">
+          <div class="val-icon">💌</div>
+          <div class="val-text"><strong>Atención personalizada</strong>Tu boda, tu historia, tu estilo.</div>
+        </div>
+        <div class="val-item reveal reveal-delay-3">
+          <div class="val-icon">🌸</div>
+          <div class="val-text"><strong>Estética floral</strong>Diseño visual con impacto emocional.</div>
+        </div>
+        <div class="val-item reveal reveal-delay-4">
+          <div class="val-icon">🤝</div>
+          <div class="val-text"><strong>Red de proveedores</strong>Los mejores talentos de Lima.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ── -->
+  <section id="servicios">
+    <div class="services-bg"></div>
+    <div class="services-header">
+      <div class="section-tag" style="color:var(--rose-light);">Servicios</div>
+      <h2 class="section-title">Todo lo que tu boda <em>necesita</em></h2>
+      <p class="section-body">Desde la primera idea hasta el último vals, me encargo de que cada momento sea perfecto.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-num">01</span>
+        <span class="service-icon">📋</span>
+        <div class="service-title">Planificación Integral</div>
+        <p class="service-desc">Coordino absolutamente todo: venue, catering, florería, música, fotografía y cada proveedor que necesites desde cero.</p>
+        <a href="#contacto" class="service-link">Saber más →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-num">02</span>
+        <span class="service-icon">💐</span>
+        <div class="service-title">Decoración & Florería</div>
+        <p class="service-desc">Diseño ambientes que cuentan tu historia. Desde centros de mesa íntimos hasta montajes de gran escala con flores frescas.</p>
+        <a href="#contacto" class="service-link">Saber más →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-num">03</span>
+        <span class="service-icon">📸</span>
+        <div class="service-title">Dirección Fotográfica</div>
+        <p class="service-desc">Coordino la sesión fotográfica para que cada imagen capture la emoción genuina de tu día especial.</p>
+        <a href="#contacto" class="service-link">Saber más →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-num">04</span>
+        <span class="service-icon">🎵</span>
+        <div class="service-title">Entretenimiento & Música</div>
+        <p class="service-desc">Bandas en vivo, DJ, animación y shows sorpresa. Creo la atmósfera perfecta para cada momento de la celebración.</p>
+        <a href="#contacto" class="service-link">Saber más →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-num">05</span>
+        <span class="service-icon">🍽️</span>
+        <div class="service-title">Gastronomía & Catering</div>
+        <p class="service-desc">Coordino con los mejores caterings de Lima para crear menús únicos que deleitarán a tus invitados.</p>
+        <a href="#contacto" class="service-link">Saber más →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <span class="service-num">06</span>
+        <span class="service-icon">📅</span>
+        <div class="service-title">Día de Coordinación</div>
+        <p class="service-desc">Estoy presente el día de tu boda para que tú y tu familia solo se encarguen de disfrutar y crear recuerdos.</p>
+        <a href="#contacto" class="service-link">Saber más →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROCESO ── -->
+  <section>
+    <div id="proceso">
+      <div class="section-tag">¿Cómo trabajo?</div>
+      <h2 class="section-title">El camino hacia tu <em>día perfecto</em></h2>
+      <p class="section-body">Un proceso claro y amoroso diseñado para que siempre te sientas tranquila y emocionada.</p>
+      <div class="process-steps">
+        <div class="step reveal">
+          <div class="step-circle">1</div>
+          <div class="step-title">Consulta inicial</div>
+          <p class="step-desc">Nos conocemos, cuéntame tu sueño. Escucho cada detalle de lo que imaginas para tu boda.</p>
+        </div>
+        <div class="step reveal reveal-delay-1">
+          <div class="step-circle">2</div>
+          <div class="step-title">Propuesta a medida</div>
+          <p class="step-desc">Diseño una propuesta personalizada con proveedores, estética y presupuesto alineado a ti.</p>
+        </div>
+        <div class="step reveal reveal-delay-2">
+          <div class="step-circle">3</div>
+          <div class="step-title">Coordinación total</div>
+          <p class="step-desc">Gestiono cada proveedor, contrato, confirmación y logística. Tú descansas, yo trabajo.</p>
+        </div>
+        <div class="step reveal reveal-delay-3">
+          <div class="step-circle">4</div>
+          <div class="step-title">¡Tu día perfecto!</div>
+          <p class="step-desc">Estoy presente desde el amanecer hasta el último baile. Solo disfruta y sonríe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GALLERY ── -->
+  <section id="galeria" style="padding-left:0; padding-right:0;">
+    <div class="inner">
+      <div class="section-tag">Galería</div>
+      <h2 class="section-title">Bodas que <em>contamos</em></h2>
+    </div>
+    <div style="overflow:hidden; margin-top:3rem;">
+      <div class="gallery-marquee" id="marquee">
+        <!-- First set -->
+        <div class="gallery-item">
+          <div class="gallery-placeholder gp-1"><span>💍</span><p>Boda íntima</p></div>
+          <div class="gallery-item-label">Amor en detalles</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gp-2"><span>🌸</span><p>Florería premium</p></div>
+          <div class="gallery-item-label">Jardín de sueños</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gp-3"><span>🥂</span><p>Recepción gala</p></div>
+          <div class="gallery-item-label">Noche mágica</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gp-4"><span>👰‍♀️</span><p>La novia</p></div>
+          <div class="gallery-item-label">Belleza natural</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gp-5"><span>🕯️</span><p>Ambientación</p></div>
+          <div class="gallery-item-label">Luz y emoción</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gp-6"><span>🎶</span><p>Primer baile</p></div>
+          <div class="gallery-item-label">El vals perfecto</div>
+        </div>
+        <!-- Duplicated for seamless loop -->
+        <div class="gallery-item">
+          <div class="gallery-placeholder gp-1"><span>💍</span><p>Boda íntima</p></div>
+          <div class="gallery-item-label">Amor en detalles</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gp-2"><span>🌸</span><p>Florería premium</p></div>
+          <div class="gallery-item-label">Jardín de sueños</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gp-3"><span>🥂</span><p>Recepción gala</p></div>
+          <div class="gallery-item-label">Noche mágica</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gp-4"><span>👰‍♀️</span><p>La novia</p></div>
+          <div class="gallery-item-label">Belleza natural</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gp-5"><span>🕯️</span><p>Ambientación</p></div>
+          <div class="gallery-item-label">Luz y emoción</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gp-6"><span>🎶</span><p>Primer baile</p></div>
+          <div class="gallery-item-label">El vals perfecto</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS ── -->
+  <section id="testimonios">
+    <div style="max-width:1100px; margin:0 auto;">
+      <div style="text-align:center; margin-bottom:.5rem;">
+        <div class="section-tag">Testimonios</div>
+        <h2 class="section-title">Lo que dicen las <em>novias</em></h2>
+      </div>
+      <div class="testimonios-grid">
+        <div class="testi-card reveal">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Consuelo transformó nuestro sueño en algo que jamás imaginamos posible. Cada flor, cada detalle, todo fue perfecto. Solo tuve que llorar de alegría."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:linear-gradient(135deg,#E8446A,#FF7B5C);">👰</div>
+            <div>
+              <div class="testi-name">Valeria & Rodrigo</div>
+              <div class="testi-loc">Boda en Miraflores · Marzo 2024</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal reveal-delay-1">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Tenía tanto miedo de organizar todo, pero Consuelo tomó el control desde el primer día. Fue como tener a una amiga experta de tu lado todo el tiempo."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:linear-gradient(135deg,#D4A853,#EFC97A);">💑</div>
+            <div>
+              <div class="testi-name">Camila & Sebastián</div>
+              <div class="testi-loc">Boda en San Isidro · Octubre 2023</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal reveal-delay-2">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"La decoración floral fue absolutamente espectacular. Nuestros invitados aún nos preguntan por ella. Consuelo tiene un talento incomparable para crear belleza."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:linear-gradient(135deg,#C4325A,#E8446A);">🌸</div>
+            <div>
+              <div class="testi-name">Luciana & Miguel</div>
+              <div class="testi-loc">Boda en La Molina · Junio 2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PACKAGES ── -->
+  <section id="paquetes">
+    <div class="section-tag">Paquetes</div>
+    <h2 class="section-title">Encuentra tu <em>plan ideal</em></h2>
+    <p class="section-body" style="margin: 0 auto;">Opciones pensadas para cada tipo de boda y presupuesto. Contáctame para una cotización personalizada.</p>
+    <div class="packages-grid">
+      <div class="pkg-card reveal">
+        <div class="pkg-name" style="font-family:var(--font-display);font-size:1.8rem;font-weight:500;">Esencial</div>
+        <div class="pkg-price">S/ 2,500</div>
+        <div class="pkg-since">Desde · coordinación del día</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li><span class="pkg-check">✓</span>Coordinación el día de la boda</li>
+          <li><span class="pkg-check">✓</span>Timeline detallado del evento</li>
+          <li><span class="pkg-check">✓</span>Gestión de proveedores confirmados</li>
+          <li><span class="pkg-check">✓</span>Soporte por WhatsApp</li>
+          <li><span class="pkg-check">✓</span>2 asistentes el día del evento</li>
+        </ul>
+        <a href="#contacto" class="pkg-cta">Consultar</a>
+      </div>
+
+      <div class="pkg-card featured reveal reveal-delay-1">
+        <div class="pkg-badge">⭐ Más popular</div>
+        <div class="pkg-name">Premium</div>
+        <div class="pkg-price">S/ 6,500</div>
+        <div class="pkg-since">Desde · planificación completa</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li><span class="pkg-check">✓</span>Planificación integral desde cero</li>
+          <li><span class="pkg-check">✓</span>Selección y gestión de todos los proveedores</li>
+          <li><span class="pkg-check">✓</span>Diseño conceptual y moodboard</li>
+          <li><span class="pkg-check">✓</span>Supervisión de decoración y montaje</li>
+          <li><span class="pkg-check">✓</span>Coordinación completa el día de la boda</li>
+          <li><span class="pkg-check">✓</span>Sesión de degustación de menú</li>
+          <li><span class="pkg-check">✓</span>Atención personalizada ilimitada</li>
+        </ul>
+        <a href="#contacto" class="pkg-cta">¡Lo quiero!</a>
+      </div>
+
+      <div class="pkg-card reveal reveal-delay-2">
+        <div class="pkg-name" style="font-family:var(--font-display);font-size:1.8rem;font-weight:500;">Lujo</div>
+        <div class="pkg-price">S/ 12,000</div>
+        <div class="pkg-since">Desde · experiencia exclusiva</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li><span class="pkg-check">✓</span>Todo lo del plan Premium</li>
+          <li><span class="pkg-check">✓</span>Diseño floral exclusivo a medida</li>
+          <li><span class="pkg-check">✓</span>Dirección artística completa</li>
+          <li><span class="pkg-check">✓</span>Wedding trip y honeymoon planning</li>
+          <li><span class="pkg-check">✓</span>Shows y entretenimiento especial</li>
+          <li><span class="pkg-check">✓</span>Atención VIP 24/7</li>
+        </ul>
+        <a href="#contacto" class="pkg-cta">Consultar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contacto">
+    <div class="contact-bg"></div>
+    <div class="contact-inner">
+      <div class="section-tag" style="color:var(--rose-light); justify-content:center;">Contacto</div>
+      <h2 class="section-title">Empecemos a <em>planear</em> juntas</h2>
+      <p class="section-body">Cuéntame sobre tu boda soñada. Te respondo en menos de 24 horas con toda mi atención y cariño.</p>
+
+      <form class="contact-form" onsubmit="handleForm(event)">
+        <div>
+          <label class="cf-label">Tu nombre</label>
+          <input class="cf-input" type="text" placeholder="Ej. María García" required />
+        </div>
+        <div>
+          <label class="cf-label">Nombre de tu pareja</label>
+          <input class="cf-input" type="text" placeholder="Ej. Carlos López" />
+        </div>
+        <div>
+          <label class="cf-label">Correo electrónico</label>
+          <input class="cf-input" type="email" placeholder="tu@correo.com" required />
+        </div>
+        <div>
+          <label class="cf-label">WhatsApp</label>
+          <input class="cf-input" type="tel" placeholder="+51 999 999 999" />
+        </div>
+        <div>
+          <label class="cf-label">Fecha tentativa de boda</label>
+          <input class="cf-input" type="date" />
+        </div>
+        <div>
+          <label class="cf-label">N.º de invitados</label>
+          <select class="cf-select">
+            <option value="">Selecciona</option>
+            <option>Menos de 50</option>
+            <option>50 – 100</option>
+            <option>100 – 200</option>
+            <option>Más de 200</option>
+          </select>
+        </div>
+        <div class="cf-full">
+          <label class="cf-label">Cuéntame sobre tu boda soñada</label>
+          <textarea class="cf-textarea" placeholder="¿Qué estilo imaginas? ¿Tienes venue? ¿Algo especial que quieras incluir?"></textarea>
+        </div>
+        <div class="cf-full">
+          <button type="submit" class="contact-cta">💌 Enviar mi consulta</button>
+        </div>
+      </form>
+
+      <div class="contact-channels">
+        <a href="https://wa.me/51999999999" class="channel" target="_blank">
+          <div class="channel-icon">📱</div> WhatsApp directo
+        </a>
+        <a href="mailto:hola@consuelomestanza.pe" class="channel">
+          <div class="channel-icon">✉️</div> hola@consuelomestanza.pe
+        </a>
+        <a href="https://instagram.com/consuelomestanza" class="channel" target="_blank">
+          <div class="channel-icon">📸</div> @consuelomestanza
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-logo">Consuelo <span>Mestanza</span></div>
+    <div class="footer-copy">© 2025 · Wedding Planner · Lima, Perú</div>
+    <div class="footer-love">Hecho con <span>🤍</span> para novias felices</div>
+  </footer>
+
+  <!-- ── SUCCESS TOAST ── -->
+  <div id="toast" style="
+    position:fixed; bottom:2rem; right:2rem; z-index:999;
+    background:var(--rose); color:#fff;
+    padding:1rem 1.6rem; border-radius:12px;
+    font-size:.88rem; font-weight:500;
+    box-shadow:0 8px 30px rgba(232,68,106,.4);
+    transform:translateY(80px); opacity:0;
+    transition:transform .4s var(--ease), opacity .4s;
+    pointer-events:none;
+  ">💌 ¡Mensaje enviado! Te escribiré pronto 🤍</div>
+
+  <script>
+    /* ── CURSOR ── */
+    const cursor = document.getElementById('cursor');
+    const ring   = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    function animCursor() {
+      cursor.style.left = mx + 'px';
+      cursor.style.top  = my + 'px';
+      rx += (mx - rx) * .12;
+      ry += (my - ry) * .12;
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(animCursor);
+    }
+    animCursor();
+    document.querySelectorAll('a, button, .service-card, .testi-card, .pkg-card').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
+      el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
+    });
+
+    /* ── NAV SCROLL ── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    /* ── MOBILE NAV ── */
+    function toggleNav() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+    });
+
+    /* ── PETALS ── */
+    const petalsCont = document.getElementById('petals');
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDuration = (6 + Math.random() * 8) + 's';
+      p.style.animationDelay   = (Math.random() * 10) + 's';
+      p.style.width  = (5 + Math.random() * 8) + 'px';
+      p.style.height = (8 + Math.random() * 12) + 'px';
+      p.style.opacity = .4 + Math.random() * .4;
+      p.style.background = Math.random() > .5 ? 'var(--rose-light)' : 'var(--gold-light)';
+      petalsCont.appendChild(p);
+    }
+
+    /* ── SCROLL REVEAL ── */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* ── FORM ── */
+    function handleForm(e) {
+      e.preventDefault();
+      const toast = document.getElementById('toast');
+      toast.style.transform = 'translateY(0)';
+      toast.style.opacity   = '1';
+      setTimeout(() => {
+        toast.style.transform = 'translateY(80px)';
+        toast.style.opacity   = '0';
+      }, 3500);
+      e.target.reset();
+    }
+
+    /* ── SMOOTH ANCHOR ── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
