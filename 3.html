@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consuelo Mestanza · Wedding Planner de Lujo | Lima, Perú</title>
+  <meta name="description" content="Consuelo Mestanza, la Wedding Planner más exclusiva de Lima. Creamos bodas de ensueño con alma, color vibrante y emociones inolvidables." />
+  <meta name="keywords" content="wedding planner Lima, bodas de lujo, organizadora de bodas, matrimonios Perú, planner boda Lima" />
+  <meta name="author" content="Consuelo Mestanza" />
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --viva-magenta: #E83A5E;
+      --viva-coral: #FF7B4A;
+      --viva-gold: #F9C851;
+      --viva-lavender: #B5739E;
+      --viva-mint: #7DC4B0;
+      --viva-peach: #FFD6B0;
+      --viva-rose: #FFB3C6;
+      --dark-charcoal: #1E1E24;
+      --soft-white: #FFFBF7;
+      --pure-white: #FFFFFF;
+      
+      --shadow-sm: 0 10px 30px rgba(0,0,0,0.08);
+      --shadow-md: 0 20px 40px rgba(232,58,94,0.15);
+      --shadow-lg: 0 25px 50px rgba(0,0,0,0.12);
+      --border-radius-sm: 20px;
+      --border-radius-md: 28px;
+      --border-radius-lg: 40px;
+      --transition: all 0.4s cubic-bezier(0.2, 0.95, 0.4, 1.05);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--soft-white);
+      color: var(--dark-charcoal);
+      overflow-x: hidden;
+    }
+
+    /* Custom Cursor */
+    .cursor-dot {
+      width: 8px; height: 8px; background: var(--viva-magenta);
+      border-radius: 50%; position: fixed; pointer-events: none;
+      z-index: 9999; transition: transform 0.1s;
+    }
+    .cursor-ring {
+      width: 40px; height: 40px; border: 2px solid var(--viva-gold);
+      border-radius: 50%; position: fixed; pointer-events: none;
+      z-index: 9998; transition: all 0.3s ease;
+    }
+
+    /* WhatsApp Float */
+    .whatsapp-float {
+      position: fixed; bottom: 30px; left: 30px; z-index: 1000;
+      background: #25D366; width: 60px; height: 60px;
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; box-shadow: 0 5px 20px rgba(37,211,102,0.4);
+      transition: var(--transition); cursor: pointer;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.6); }
+    .whatsapp-float i { font-size: 32px; color: white; }
+
+    /* Navbar */
+    nav {
+      position: fixed; top: 0; width: 100%; padding: 1.2rem 6%;
+      display: flex; justify-content: space-between; align-items: center;
+      z-index: 1000; transition: var(--transition);
+      background: transparent;
+    }
+    nav.scrolled {
+      background: rgba(255,251,247,0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-sm);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--viva-magenta), var(--viva-coral));
+      -webkit-background-clip: text; background-clip: text;
+      color: transparent; text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; font-weight: 600; font-size: 0.85rem;
+      letter-spacing: 0.03em; color: var(--dark-charcoal);
+      transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--viva-magenta); transform: translateY(-2px); }
+    .btn-nav {
+      background: linear-gradient(135deg, var(--viva-magenta), var(--viva-coral));
+      padding: 0.6rem 1.6rem; border-radius: 40px; color: white !important;
+    }
+    .btn-nav:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+    /* Hero Section con imagen real */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 0 6%;
+      background: linear-gradient(135deg, var(--viva-rose) 0%, var(--viva-peach) 50%, var(--soft-white) 100%);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&h=1200&fit=crop') center/cover;
+      opacity: 0.15; pointer-events: none;
+    }
+    .hero-content { flex: 1; z-index: 2; }
+    .hero-badge {
+      display: inline-block; background: var(--viva-magenta);
+      padding: 0.4rem 1.2rem; border-radius: 40px;
+      font-size: 0.7rem; font-weight: 700; color: white;
+      letter-spacing: 0.1em; margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5.5vw, 5.2rem);
+      font-weight: 700; line-height: 1.1;
+    }
+    .hero h1 span { color: var(--viva-magenta); }
+    .hero p {
+      font-size: 1rem; max-width: 480px; margin: 1.5rem 0;
+      color: var(--dark-charcoal); opacity: 0.85;
+    }
+    .hero-stats {
+      display: flex; gap: 2rem; margin: 2rem 0;
+    }
+    .stat .num {
+      font-size: 2rem; font-weight: 800; color: var(--viva-magenta);
+    }
+    .hero-image {
+      flex: 1; display: flex; justify-content: center;
+      position: relative; z-index: 2;
+    }
+    .hero-photo {
+      width: 380px; height: 480px; object-fit: cover;
+      border-radius: 180px 180px 60px 60px;
+      box-shadow: var(--shadow-lg);
+      border: 4px solid white;
+      transition: var(--transition);
+    }
+    .hero-photo:hover { transform: scale(1.02) translateY(-10px); }
+
+    /* Sección vibrante */
+    .vibrant-section {
+      padding: 5rem 6%;
+      background: linear-gradient(145deg, var(--viva-magenta), var(--viva-coral));
+      color: white;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; text-align: center; margin-bottom: 2rem;
+    }
+
+    /* Servicios Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .service-card {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: var(--border-radius-md);
+      padding: 2rem;
+      transition: var(--transition);
+      text-align: center;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255,255,255,0.25);
+    }
+    .service-icon {
+      width: 80px; height: 80px;
+      background: var(--viva-gold);
+      border-radius: 30px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    .service-icon i { font-size: 2.5rem; color: var(--viva-magenta); }
+
+    /* Sección con imagen de fondo */
+    .story-section {
+      padding: 5rem 6%;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1600&h=900&fit=crop');
+      background-size: cover;
+      background-attachment: fixed;
+      color: white;
+      text-align: center;
+    }
+
+    /* Tabs Proceso */
+    .tabs-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .tabs-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--dark-charcoal);
+    }
+    .tab-btn.active {
+      background: var(--viva-magenta);
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    .tab-content.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Galería */
+    .gallery-section {
+      padding: 5rem 6%;
+      background: var(--viva-peach);
+    }
+    .gallery-scroll {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      padding: 1rem 0;
+      scroll-snap-type: x mandatory;
+    }
+    .gallery-scroll::-webkit-scrollbar { display: none; }
+    .gallery-item {
+      flex: 0 0 320px;
+      height: 400px;
+      background: white;
+      border-radius: var(--border-radius-md);
+      scroll-snap-align: center;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .gallery-item:hover { transform: scale(1.02); }
+    .gallery-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      padding: 1.5rem;
+      color: white;
+    }
+
+    /* Testimonios */
+    .testimonials {
+      padding: 5rem 6%;
+      background: linear-gradient(135deg, var(--viva-lavender), var(--viva-mint));
+      color: white;
+    }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .testi-card {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: var(--border-radius-md);
+      transition: var(--transition);
+    }
+    .testi-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.25); }
+    .stars { color: var(--viva-gold); margin-bottom: 1rem; letter-spacing: 4px; }
+
+    /* Paquetes */
+    .packages {
+      padding: 5rem 6%;
+      background: var(--soft-white);
+    }
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .pkg-card {
+      background: var(--pure-white);
+      border-radius: var(--border-radius-md);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+    }
+    .pkg-card.featured {
+      border: 2px solid var(--viva-gold);
+      transform: scale(1.02);
+    }
+    .pkg-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
+    .pkg-price { font-size: 2rem; font-weight: 800; color: var(--viva-magenta); margin: 1rem 0; }
+
+    /* Contacto */
+    .contact {
+      padding: 5rem 6%;
+      background: linear-gradient(135deg, var(--dark-charcoal), #2D2D35);
+      color: white;
+    }
+    .contact-form {
+      max-width: 600px;
+      margin: 2rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-form input, .contact-form select, .contact-form textarea {
+      padding: 1rem;
+      border-radius: 20px;
+      border: none;
+      font-family: inherit;
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+    .contact-form input::placeholder { color: rgba(255,255,255,0.6); }
+    .btn-submit {
+      background: linear-gradient(135deg, var(--viva-magenta), var(--viva-coral));
+      padding: 1rem;
+      border: none;
+      border-radius: 40px;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .btn-submit:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+    footer {
+      padding: 2rem 6%;
+      text-align: center;
+      background: var(--dark-charcoal);
+      color: rgba(255,255,255,0.7);
+    }
+
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; text-align: center; padding-top: 100px; }
+      .hero-stats { justify-content: center; }
+      .hero-image { margin-top: 2rem; }
+      .hero-photo { width: 280px; height: 360px; }
+      .nav-links { display: none; }
+      .burger {
+        display: flex; flex-direction: column; gap: 5px; cursor: pointer;
+      }
+      .burger span {
+        width: 25px; height: 2px; background: var(--dark-charcoal);
+        transition: 0.3s;
+      }
+      .nav-links.open {
+        display: flex; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: var(--soft-white); flex-direction: column;
+        justify-content: center; align-items: center; gap: 2rem;
+        z-index: 999;
+      }
+    }
+    .burger { display: none; }
+  </style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<a href="https://wa.me/51999999999" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<nav id="navbar">
+  <a href="#" class="logo">Consuelo <span style="color:var(--viva-magenta);">Mestanza</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#hero">Inicio</a></li>
+    <li><a href="#services">Servicios</a></li>
+    <li><a href="#process">Proceso</a></li>
+    <li><a href="#gallery">Galería</a></li>
+    <li><a href="#testimonials">Testimonios</a></li>
+    <li><a href="#packages">Paquetes</a></li>
+    <li><a href="#contact" class="btn-nav">Contáctame</a></li>
+  </ul>
+  <div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Hero con foto real -->
+<section class="hero" id="hero">
+  <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+    <div class="hero-badge"><i class="fas fa-heart"></i> Lima · Perú · Luxury Wedding Planner</div>
+    <h1>Tu historia de amor, <span>nuestra obra maestra</span></h1>
+    <p>Consuelo Mestanza, la Wedding Planner más exclusiva de Lima. Transformamos sueños en bodas inolvidables llenas de color, magia y emociones.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="num">150+</div><div>Bodas únicas</div></div>
+      <div class="stat"><div class="num">9 años</div><div>Creando magia</div></div>
+      <div class="stat"><div class="num">100%</div><div>Amor genuino</div></div>
+    </div>
+  </div>
+  <div class="hero-image" data-aos="fade-left" data-aos-duration="1000">
+    <img class="hero-photo" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&h=800&fit=crop" alt="Consuelo Mestanza Wedding Planner">
+  </div>
+</section>
+
+<!-- Servicios vibrantes -->
+<section class="vibrant-section" id="services">
+  <h2 class="section-title">Servicios <i class="fas fa-sparkle"></i> Premium</h2>
+  <div class="services-grid">
+    <div class="service-card"><div class="service-icon"><i class="fas fa-clipboard-list"></i></div><h3>Planificación Total</h3><p>Coordinación integral desde cero, gestión de presupuesto y timeline perfecto.</p></div>
+    <div class="service-card"><div class="service-icon"><i class="fas fa-flower"></i></div><h3>Diseño Floral</h3><p>Arreglos únicos, flores de temporada, colores vibrantes que enamoran.</p></div>
+    <div class="service-card"><div class="service-icon"><i class="fas fa-champagne-glasses"></i></div><h3>Dirección Creativa</h3><p>Moodboard, decoración, iluminación escénica y ambientación WOW.</p></div>
+    <div class="service-card"><div class="service-icon"><i class="fas fa-music"></i></div><h3>Entretenimiento</h3><p>Bandas en vivo, DJs, shows sorpresa y experiencias inmersivas.</p></div>
+    <div class="service-card"><div class="service-icon"><i class="fas fa-camera"></i></div><h3>Fotografía & Video</h3><p>Estilo editorial, capturando cada emoción con arte y sensibilidad.</p></div>
+    <div class="service-card"><div class="service-icon"><i class="fas fa-calendar-check"></i></div><h3>Coordinación Día B</h3><p>Tú disfrutas, yo gestiono cada detalle minuto a minuto.</p></div>
+  </div>
+</section>
+
+<!-- Story con imagen de fondo -->
+<section class="story-section">
+  <h2 style="font-size:2.5rem; margin-bottom:1rem;">Tu boda, <span style="color:var(--viva-gold);">exactamente como la soñaste</span></h2>
+  <p style="max-width:700px; margin:0 auto;">Cada pareja tiene una historia única. Nosotros la convertimos en una celebración inolvidable, cuidando cada detalle con pasión y precisión.</p>
+</section>
+
+<!-- Proceso con tabs UI/UX -->
+<section style="padding: 5rem 6%;" id="process">
+  <h2 class="section-title" style="color:var(--dark-charcoal);">Cómo <span style="color:var(--viva-magenta);">creamos</span> tu día perfecto</h2>
+  <div class="tabs-container">
+    <div class="tabs-buttons">
+      <button class="tab-btn active" data-tab="tab1">✨ 1. Inspiración</button>
+      <button class="tab-btn" data-tab="tab2">🎨 2. Creación</button>
+      <button class="tab-btn" data-tab="tab3">📋 3. Coordinación</button>
+      <button class="tab-btn" data-tab="tab4">💖 4. Magia</button>
+    </div>
+    <div class="tab-content active" id="tab1">
+      <div style="background:var(--viva-peach); padding:3rem; border-radius:var(--border-radius-md); text-align:center;">
+        <i class="fas fa-comments" style="font-size:3rem; color:var(--viva-magenta);"></i>
+        <h3>Consulta inicial</h3>
+        <p>Nos conocemos, escucho tu historia, sueños y cada pequeño detalle que hace especial tu amor.</p>
+      </div>
+    </div>
+    <div class="tab-content" id="tab2">
+      <div style="background:var(--viva-rose); padding:3rem; border-radius:var(--border-radius-md); text-align:center;">
+        <i class="fas fa-palette" style="font-size:3rem; color:var(--viva-magenta);"></i>
+        <h3>Propuesta a medida</h3>
+        <p>Diseño un concepto único con moodboard, paleta de colores y selección de proveedores élite.</p>
+      </div>
+    </div>
+    <div class="tab-content" id="tab3">
+      <div style="background:var(--viva-mint); padding:3rem; border-radius:var(--border-radius-md); text-align:center;">
+        <i class="fas fa-tasks" style="font-size:3rem; color:var(--viva-magenta);"></i>
+        <h3>Gestión total</h3>
+        <p>Coordinamos cada proveedor, contratos, logística y ensayos. Tú solo emocionarte.</p>
+      </div>
+    </div>
+    <div class="tab-content" id="tab4">
+      <div style="background:linear-gradient(135deg, var(--viva-gold), var(--viva-coral)); padding:3rem; border-radius:var(--border-radius-md); text-align:center; color:white;">
+        <i class="fas fa-heart" style="font-size:3rem;"></i>
+        <h3>El gran día</h3>
+        <p>Todo fluye perfectamente, sin preocupaciones. Solo sonrisas, bailes y recuerdos eternos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Galería Horizontal -->
+<section class="gallery-section" id="gallery">
+  <h2 class="section-title" style="color:var(--dark-charcoal);">Momentos que <span style="color:var(--viva-magenta);">inspiran</span></h2>
+  <div class="gallery-scroll">
+    <div class="gallery-item"><img class="gallery-img" src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=800&fit=crop" alt="Boda"><div class="gallery-overlay"><i class="fas fa-camera"></i> Ceremonia soñada</div></div>
+    <div class="gallery-item"><img class="gallery-img" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&h=800&fit=crop" alt="Flores"><div class="gallery-overlay"><i class="fas fa-flower"></i> Flores que hablan</div></div>
+    <div class="gallery-item"><img class="gallery-img" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&h=800&fit=crop" alt="Novia"><div class="gallery-overlay"><i class="fas fa-heart"></i> La novia feliz</div></div>
+    <div class="gallery-item"><img class="gallery-img" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&h=800&fit=crop" alt="Recepción"><div class="gallery-overlay"><i class="fas fa-champagne-glasses"></i> Brindis eterno</div></div>
+    <div class="gallery-item"><img class="gallery-img" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=600&h=800&fit=crop" alt="Baile"><div class="gallery-overlay"><i class="fas fa-music"></i> Primer baile</div></div>
+  </div>
+</section>
+
+<!-- Testimonios -->
+<section class="testimonials" id="testimonials">
+  <h2 class="section-title" style="color:white;">Lo que dicen <span style="color:var(--viva-gold);">nuestras novias</span></h2>
+  <div class="testi-grid">
+    <div class="testi-card"><div class="stars">★★★★★</div><p>"Consuelo hizo magia con nuestra boda. Los colores, las flores, la organización... todo fue perfecto. Nuestros invitados aún la recuerdan."</p><strong>— Valeria & Rodrigo</strong></div>
+    <div class="testi-card"><div class="stars">★★★★★</div><p>"Desde el primer momento nos transmitió seguridad y pasión. El resultado superó todas nuestras expectativas. Una profesional increíble."</p><strong>— Camila & Sebastián</strong></div>
+    <div class="testi-card"><div class="stars">★★★★★</div><p>"No sabíamos por dónde empezar, pero ella nos guió con tanto amor. Nuestra boda fue un sueño hecho realidad."</p><strong>— Luciana & Miguel</strong></div>
+  </div>
+</section>
+
+<!-- Paquetes -->
+<section class="packages" id="packages">
+  <h2 class="section-title">Paquetes <span style="color:var(--viva-magenta);">exclusivos</span></h2>
+  <div class="pkg-grid">
+    <div class="pkg-card"><h3>Esencial</h3><div class="pkg-price">S/ 2,900</div><ul style="list-style:none;"><li><i class="fas fa-check-circle" style="color:var(--viva-magenta);"></i> Coordinación día B</li><li><i class="fas fa-check-circle"></i> Timeline detallado</li><li><i class="fas fa-check-circle"></i> 2 asistentes</li></ul><button class="btn-submit" style="margin-top:1rem; width:100%;" onclick="scrollToContact()">Consultar</button></div>
+    <div class="pkg-card featured"><h3><i class="fas fa-star" style="color:var(--viva-gold);"></i> Premium</h3><div class="pkg-price">S/ 7,500</div><ul><li><i class="fas fa-check-circle"></i> Planificación completa</li><li><i class="fas fa-check-circle"></i> Diseño floral & decoración</li><li><i class="fas fa-check-circle"></i> Proveedores élite</li><li><i class="fas fa-check-circle"></i> Acompañamiento VIP</li></ul><button class="btn-submit" style="margin-top:1rem; width:100%; background:var(--viva-gold); color:var(--dark-charcoal);" onclick="scrollToContact()">Lo quiero</button></div>
+    <div class="pkg-card"><h3>Lujo</h3><div class="pkg-price">S/ 15,900</div><ul><li><i class="fas fa-check-circle"></i> Experiencia 360°</li><li><i class="fas fa-check-circle"></i> Wedding trip & honeymoon</li><li><i class="fas fa-check-circle"></i> Shows exclusivos</li><li><i class="fas fa-check-circle"></i> Decoración a medida</li></ul><button class="btn-submit" style="margin-top:1rem; width:100%;" onclick="scrollToContact()">Consultar</button></div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section class="contact" id="contact">
+  <h2 style="font-family:'Playfair Display'; font-size:2rem; text-align:center;">Comencemos a <span style="color:var(--viva-gold);">planear</span> juntos</h2>
+  <p style="text-align:center; opacity:0.8;">Cuéntame tu visión, y crearemos la boda más hermosa.</p>
+  <form class="contact-form" onsubmit="handleForm(event)">
+    <input type="text" placeholder="Tu nombre" required>
+    <input type="email" placeholder="Correo electrónico" required>
+    <input type="tel" placeholder="WhatsApp / Teléfono">
+    <select><option>Fecha tentativa de boda</option><option>2025</option><option>2026</option><option>Aún definiendo</option></select>
+    <textarea rows="4" placeholder="Cuéntame sobre tu boda soñada... ¿Qué estilo imaginas? ¿Colores? ¿Lugar?"></textarea>
+    <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Enviar mensaje</button>
+  </form>
+</section>
+
+<footer>
+  <p><i class="fas fa-heart" style="color:var(--viva-magenta);"></i> Consuelo Mestanza · Luxury Wedding Planner · Lima, Perú</p>
+  <p style="margin-top:0.5rem;">© 2025 · Bodas con alma, color y emociones inolvidables</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ once: true, duration: 800 });
+  
+  // Custom cursor
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mx=0, my=0, rx=0, ry=0;
+  document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
+  function animate() {
+    dot.style.transform = `translate(${mx}px, ${my}px)`;
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.transform = `translate(${rx}px, ${ry}px)`;
+    requestAnimationFrame(animate);
+  }
+  animate();
+  
+  document.querySelectorAll('a, button, .service-card, .pkg-card').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.style.width = '60px');
+    el.addEventListener('mouseleave', () => ring.style.width = '40px');
+  });
+  
+  // Nav scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+  });
+  
+  // Tabs
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabId = btn.getAttribute('data-tab');
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    });
+  });
+  
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  
+  function handleForm(e) {
+    e.preventDefault();
+    alert('💌 ¡Mensaje enviado! En menos de 24 horas te contactaré para comenzar a diseñar tu boda soñada. 💖');
+    e.target.reset();
+  }
+  
+  function scrollToContact() {
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  }
+  
+  // Smooth scroll all anchors
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+        if (window.innerWidth <= 768) document.getElementById('navLinks').classList.remove('open');
+      }
+    });
+  });
+</script>
+</body>
+</html>
