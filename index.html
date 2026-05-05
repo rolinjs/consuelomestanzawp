@@ -6,7 +6,7 @@
   <title>Consuelo Mestanza – Wedding Planner</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@500;600;700&family=Lavishly+Yours&family=Simonetta:ital,wght@0,400;0,900;1,400;1,900&display=swap" rel="stylesheet" />
   <style>
     /* ─── CSS VARIABLES ──────────────────────────────────────────── */
     :root {
@@ -22,6 +22,9 @@
       --font-serif: 'Cormorant Garamond', serif;
       --font-script:'Dancing Script', cursive;
       --font-sans:  'Montserrat', sans-serif;
+      /* ── Nuevas fuentes para sección Sobre Mí ── */
+      --font-lavish:   'Lavishly Yours', cursive;
+      --font-simonetta:'Simonetta', serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -219,11 +222,9 @@
       gap: 18px; max-width: 980px; margin: 0 auto 32px;
     }
 
-    /* Fila extra de videos oculta */
     .video-extra {
       display: grid; grid-template-columns: repeat(3,1fr);
       gap: 18px; max-width: 980px; margin: 0 auto 32px;
-      /* Animación de despliegue */
       max-height: 0;
       overflow: hidden;
       opacity: 0;
@@ -275,12 +276,10 @@
       gap: 10px; max-width: 980px; margin: 0 auto 32px;
     }
 
-    /* Fila extra de fotos oculta */
     .photo-extra {
       display: grid;
       grid-template-columns: repeat(6,1fr);
       gap: 10px; max-width: 980px; margin: 0 auto 32px;
-      /* Animación de despliegue */
       max-height: 0;
       overflow: hidden;
       opacity: 0;
@@ -331,11 +330,19 @@
       font-weight: 600; color: var(--dark); margin-bottom: 14px;
     }
     .mv-body { font-size: .82rem; line-height: 1.8; color: var(--mid); }
+
+    /* ── DIVIDER: vertical en desktop, horizontal en mobile ── */
     .mv-divider {
-      display: flex; flex-direction: column;
-      align-items: center; gap: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
     }
-    .mv-divider-line { width: 1px; height: 80px; background: var(--blush-lt); }
+    .mv-divider-line {
+      width: 1px;
+      height: 80px;
+      background: var(--blush-lt);
+    }
     .mv-heart { color: var(--blush); font-size: 1rem; }
 
     /* ─── SOCIAL SECTION ──────────────────────────────────────────── */
@@ -464,14 +471,29 @@
       .video-extra { grid-template-columns: 1fr; }
       .photo-grid,
       .photo-extra { grid-template-columns: repeat(3,1fr); }
-      .mv-grid { grid-template-columns: 1fr; text-align: center; }
-      .mv-divider { flex-direction: row; }
-      .mv-divider-line { width: 80px; height: 1px; }
+
+      /* ── MISIÓN/VISIÓN: stacked en mobile ── */
+      .mv-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+      }
+      /* Divider se convierte en separador horizontal */
+      .mv-divider {
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+      }
+      .mv-divider-line {
+        width: 60px;
+        height: 1px;
+        flex-shrink: 0;
+      }
+
       .social-inner { grid-template-columns: 1fr; }
       .social-photos { grid-template-columns: repeat(4,1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
 
-      /* Ajuste max-height en mobile para video-extra expandido */
       .video-extra.expanded { max-height: 1200px; }
     }
 
@@ -484,12 +506,17 @@
       .video-section, .photo-section, .essence-section, .social-section { padding: 50px 20px; }
       footer { padding: 50px 20px 0; }
 
-      /* Ajuste max-height en mobile pequeño */
       .video-extra.expanded { max-height: 2000px; }
       .photo-extra.expanded { max-height: 1200px; }
     }
 
-    /* ─── SOBRE MÍ ───────────────────────────────────────────── */
+    /* ═══════════════════════════════════════════════════
+       SOBRE MÍ — tipografía actualizada
+       Título (.about-name): se mantiene con Dancing Script (original)
+       Subtítulos / role: Simonetta
+       Texto corrido: Simonetta regular
+       Headline poético: Lavishly Yours
+    ════════════════════════════════════════════════════ */
     .about-section {
       padding: 80px 40px;
       background: #fff;
@@ -582,6 +609,7 @@
       align-items: center;
       gap: 10px;
       margin-bottom: 16px;
+      /* mantiene Montserrat del body */
     }
     .about-tag::after {
       content: '';
@@ -591,6 +619,7 @@
       background: var(--blush-lt);
     }
 
+    /* Título principal: se mantiene con Dancing Script (original) */
     .about-name {
       font-family: var(--font-script);
       font-size: clamp(2rem, 4vw, 2.8rem);
@@ -599,21 +628,24 @@
       margin-bottom: 4px;
     }
 
+    /* Role / subtítulo → Simonetta en versalitas */
     .about-role {
-      font-size: .65rem;
-      letter-spacing: .18em;
+      font-family: var(--font-simonetta);
+      font-size: .78rem;
+      letter-spacing: .14em;
       text-transform: uppercase;
       color: var(--light);
-      font-weight: 500;
+      font-weight: 400;
       margin-bottom: 26px;
     }
 
+    /* Frase poética → Lavishly Yours */
     .about-headline {
-      font-family: var(--font-serif);
-      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+      font-family: var(--font-lavish);
+      font-size: clamp(1.9rem, 3.2vw, 2.5rem);
       font-weight: 400;
       color: var(--dark);
-      line-height: 1.35;
+      line-height: 1.3;
       margin-bottom: 20px;
     }
 
@@ -622,11 +654,14 @@
       font-style: italic;
     }
 
+    /* Texto de párrafo → Simonetta */
     .about-body {
-      font-size: .82rem;
+      font-family: var(--font-simonetta);
+      font-size: .92rem;
       line-height: 1.9;
       color: var(--mid);
       margin-bottom: 32px;
+      font-weight: 400;
     }
 
     .about-stats {
@@ -639,15 +674,17 @@
 
     .stat-item { text-align: center; }
 
+    /* Números de estadísticas → Simonetta bold */
     .stat-number {
-      font-family: var(--font-serif);
+      font-family: var(--font-simonetta);
       font-size: 2rem;
-      font-weight: 600;
+      font-weight: 900;
       color: var(--dark);
       line-height: 1;
       margin-bottom: 4px;
     }
 
+    /* Labels de estadísticas → Montserrat (del body, para legibilidad) */
     .stat-label {
       font-size: .6rem;
       letter-spacing: .14em;
@@ -679,7 +716,7 @@
 ════════════════════════════════════════════════════ -->
 <header>
   <a class="logo-wrap" href="#">
-    <img class="logo-img" src="img/image.webp" alt="Bella Moments"
+    <img class="logo-img" src="img/LOGO PRINCIPAL SIN FONDO-03.png" alt="Bella Moments"
          style="width:130px;height:auto;object-fit:contain;"
          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
     <span class="logo-text" style="display:none;">
@@ -767,68 +804,48 @@
   <p class="section-tag">Galería de Videos</p>
   <h2 class="section-title">Momentos que cobran vida<span class="section-divider"></span></h2>
 
-  <!-- FILA PRINCIPAL (siempre visible) -->
   <div class="video-grid">
 
-  <!-- VIDEO 1 -->
-  <div class="video-card" id="vc1">
-    <div class="video-thumb" id="vt1">
-      <img src="https://img.youtube.com/vi/HuOFcj1iz0k/hqdefault.jpg" alt="Video 1 thumbnail"
-           onerror="this.src='https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80'" />
-      <div class="play-btn" onclick="playVideo(1, 'HuOFcj1iz0k')">
-        <div class="play-circle">
-          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+    <div class="video-card" id="vc1">
+      <div class="video-thumb" id="vt1">
+        <img src="https://img.youtube.com/vi/HuOFcj1iz0k/hqdefault.jpg" alt="Video 1 thumbnail"
+             onerror="this.src='https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80'" />
+        <div class="play-btn" onclick="playVideo(1, 'HuOFcj1iz0k')">
+          <div class="play-circle">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
         </div>
+        <span class="video-duration">--:--</span>
       </div>
-      <span class="video-duration">--:--</span> <!-- La duración se puede obtener con la API de YouTube -->
     </div>
-  </div>
 
-  <!-- VIDEO 2 -->
-  <div class="video-card" id="vc2">
-    <div class="video-thumb" id="vt2">
-      <img src="https://img.youtube.com/vi/gEMBaWNUtKU/hqdefault.jpg" alt="Video 2 thumbnail"
-           onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80'" />
-      <div class="play-btn" onclick="playVideo(2, 'gEMBaWNUtKU')">
-        <div class="play-circle">
-          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+    <div class="video-card" id="vc2">
+      <div class="video-thumb" id="vt2">
+        <img src="https://img.youtube.com/vi/gEMBaWNUtKU/hqdefault.jpg" alt="Video 2 thumbnail"
+             onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80'" />
+        <div class="play-btn" onclick="playVideo(2, 'gEMBaWNUtKU')">
+          <div class="play-circle">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
         </div>
+        <span class="video-duration">--:--</span>
       </div>
-      <span class="video-duration">--:--</span>
     </div>
-  </div>
 
-  <!-- VIDEO 3 -->
-  <div class="video-card" id="vc3">
-    <div class="video-thumb" id="vt3">
-      <img src="https://img.youtube.com/vi/njmflnq97Dw/hqdefault.jpg" alt="Video 3 thumbnail"
-           onerror="this.src='https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&q=80'" />
-      <div class="play-btn" onclick="playVideo(3, 'njmflnq97Dw')">
-        <div class="play-circle">
-          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+    <div class="video-card" id="vc3">
+      <div class="video-thumb" id="vt3">
+        <img src="https://img.youtube.com/vi/njmflnq97Dw/hqdefault.jpg" alt="Video 3 thumbnail"
+             onerror="this.src='https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&q=80'" />
+        <div class="play-btn" onclick="playVideo(3, 'njmflnq97Dw')">
+          <div class="play-circle">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
         </div>
+        <span class="video-duration">--:--</span>
       </div>
-      <span class="video-duration">--:--</span>
     </div>
-  </div>
 
-</div><!-- /video-grid -->
-
-<script>
-function playVideo(videoNumber, videoId) {
-  // Abre el video de YouTube en una nueva ventana o modal
-  // Opción 1: Abrir en YouTube (nueva pestaña)
-  window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
-  
-  // Opción 2: Si quieres incrustarlo en la misma página, puedes usar:
-  // const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-  // window.open(videoUrl, '_blank');
-  
-  console.log(`Reproduciendo video ${videoNumber} con ID: ${videoId}`);
-}
-</script>
-
-  
+  </div><!-- /video-grid -->
 </section>
 
 
@@ -839,9 +856,7 @@ function playVideo(videoNumber, videoId) {
   <p class="section-tag">Galería de Fotos</p>
   <h2 class="section-title">Cada detalle, cada emoción<span class="section-divider"></span></h2>
 
-  <!-- FILA PRINCIPAL (siempre visible) -->
   <div class="photo-grid">
-
     <div class="photo-card" onclick="openLightbox(this)">
       <img src="img/Foto 1.webp" alt="Galería 1"
            onerror="this.src='https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80'" />
@@ -866,12 +881,9 @@ function playVideo(videoNumber, videoId) {
       <img src="img/Captura de pantalla 2026-05-04 112146.webp" alt="Galería 6"
            onerror="this.src='https://images.unsplash.com/photo-1601979031925-424e53b6caaa?w=600&q=80'" />
     </div>
+  </div>
 
-  </div><!-- /photo-grid -->
-
-  <!-- FILA EXTRA (oculta hasta hacer click en "Ver Más Fotos") -->
   <div class="photo-extra" id="photoExtra">
-
     <div class="photo-card" onclick="openLightbox(this)">
       <img src="img/Foto primeras novias Yesenia 25.11.webp" alt="Galería 7"
            onerror="this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80'" />
@@ -896,8 +908,7 @@ function playVideo(videoNumber, videoId) {
       <img src="img/Diapos foto 37.webp" alt="Galería 12"
            onerror="this.src='https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80'" />
     </div>
-
-  </div><!-- /photo-extra -->
+  </div>
 
   <a href="#" class="btn-border" id="btnVerFotos" onclick="toggleFotos(event)">Ver Más Fotos</a>
 </section>
@@ -918,14 +929,18 @@ function playVideo(videoNumber, videoId) {
 
     <div class="about-text">
       <p class="about-tag">Sobre mí</p>
+      <!-- Título: se mantiene Dancing Script (original) -->
       <h2 class="about-name">Consuelo Mestanza</h2>
+      <!-- Role: Simonetta -->
       <p class="about-role">Wedding &amp; Event Planner · Lima, Perú</p>
 
+      <!-- Frase poética: Lavishly Yours -->
       <p class="about-headline">
         Porque el amor merece<br>
         <em>una historia perfecta.</em>
       </p>
 
+      <!-- Párrafo: Simonetta -->
       <p class="about-body">
         Soy Consuelo Mestanza, wedding planner con el propósito de convertir cada boda en una obra maestra. Creo que detrás de cada pareja hay una historia única, y mi misión es contarla con cada flor, cada luz y cada instante cuidado al detalle.<br><br>
         Acompaño a novios desde la primera idea hasta el último baile, con total dedicación, comunicación transparente y la calma que solo da la experiencia. Tu único trabajo ese día es emocionarte — el resto lo hago yo.
@@ -979,7 +994,7 @@ function playVideo(videoNumber, videoId) {
     </div>
 
     <div class="mv-item">
-      <div class="mv-icon">👁</div>
+      <div class="mv-icon">♡</div>
       <h3 class="mv-title">Visión</h3>
       <p class="mv-body">
         Ser la empresa de wedding planning líder en crear bodas memorables, reconocida por nuestra
@@ -1000,7 +1015,6 @@ function playVideo(videoNumber, videoId) {
       <h2 class="social-title">Redes Sociales<span></span></h2>
 
       <div class="social-icons">
-        <!-- Instagram -->
         <a href="https://www.instagram.com/consuelomestanzawp?igsh=MWo3ODFxc21wN3F6eg%3D%3D&utm_source=qr" target="_blank">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -1009,14 +1023,12 @@ function playVideo(videoNumber, videoId) {
           </svg>
           @Consuelomestanzawp
         </a>
-        <!-- Facebook -->
         <a href="https://www.facebook.com/share/18ajqdRg5n/?mibextid=wwXIfr" target="_blank">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
           </svg>
           @Consuelo Mestanza Wedding &amp; Event Planner
         </a>
-        <!-- TikTok -->
         <a href="https://www.tiktok.com/@consuelomestanzawp?_r=1&_t=ZS-965JhdZLQmb" target="_blank">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.55V6.79a4.85 4.85 0 01-1.07-.1z"/>
@@ -1090,14 +1102,14 @@ function playVideo(videoNumber, videoId) {
     <div class="footer-col">
       <h4>Contáctanos</h4>
       <ul class="footer-contact">
-        <li><span class="icon">📞</span> +51 922675534</li>
-        <li><span class="icon">✉</span> consuelodelrocio20.gmail.com</li>
-        <li><span class="icon">📍</span> Todo el Perú</li>
+        <li><span class="icon"></span> +51 922675534</li>
+        <li><span class="icon"></span> consuelodelrocio20.gmail.com</li>
+        <li><span class="icon"></span> Todo el Perú</li>
       </ul>
       <a href="#" class="btn-cta-footer">Agenda tu Asesoría</a>
     </div>
 
-  </div><!-- /footer-grid -->
+  </div>
 
   <div class="footer-bottom">
     <span>© 2026 Consuelo Mestanza Wedding Planner. Todos los derechos reservados.</span>
@@ -1174,25 +1186,6 @@ function playVideo(videoNumber, videoId) {
     thumb.style.display = 'none';
     card.appendChild(iframe);
   }
-
-
-  /* ── VER MÁS VIDEOS ── */
-  let videosExpanded = false;
-
-  // function toggleVideos(e) {
-  //   e.preventDefault();
-  //   const extra = document.getElementById('videoExtra');
-  //   const btn   = document.getElementById('btnVerVideos');
-
-  //   videosExpanded = !videosExpanded;
-  //   extra.classList.toggle('expanded', videosExpanded);
-  //   btn.textContent = videosExpanded ? 'Ver Menos Videos' : 'Ver Más Videos';
-
-  //   // Si se cierra, hacer scroll suave de vuelta a la sección
-  //   if (!videosExpanded) {
-  //     document.getElementById('videos').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  //   }
-  // }
 
 
   /* ── VER MÁS FOTOS ── */
