@@ -53,35 +53,33 @@
     .logo-wrap img.logo-img {
       width: 120px; height: auto; object-fit: contain;
     }
-    /* Fallback text logo shown when image is missing */
     .logo-text {
       display: flex; flex-direction: column; line-height: 1.1;
     }
     .logo-text .brand { font-family: var(--font-script); font-size: 1.6rem; color: var(--dark); }
     .logo-text .sub   { font-family: var(--font-sans); font-size: .55rem; letter-spacing: .18em; color: var(--light); text-transform: uppercase; }
 
-   /* Por esto: */
-nav { 
-  display: flex; 
-  align-items: center; 
-  gap: 48px;  /* Aumentado de 32px a 48px */
-}
+    nav { 
+      display: flex; 
+      align-items: center; 
+      gap: 48px;
+    }
 
-.nav-links {
-  display: flex;
-  gap: 40px;  /* AÑADE esta línea - separación entre enlaces */
-}
+    .nav-links {
+      display: flex;
+      gap: 40px;
+    }
 
-nav a {
-  font-size: .68rem; 
-  font-weight: 600; 
-  letter-spacing: .12em;
-  text-transform: uppercase; 
-  color: var(--dark);
-  transition: color .25s;
-  padding: 8px 0;  /* AÑADE padding vertical para más área clickeable */
-  white-space: nowrap; /* AÑADE para evitar que se rompan en líneas */
-}
+    nav a {
+      font-size: .68rem; 
+      font-weight: 600; 
+      letter-spacing: .12em;
+      text-transform: uppercase; 
+      color: var(--dark);
+      transition: color .25s;
+      padding: 8px 0;
+      white-space: nowrap;
+    }
     nav a:hover { color: var(--blush); }
 
     .btn-cta {
@@ -93,7 +91,6 @@ nav a {
     }
     .btn-cta:hover { background: #5e6e52; }
 
-    /* hamburger */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: .3s; }
 
@@ -110,7 +107,6 @@ nav a {
     }
     .carousel-slide.active { opacity: 1; }
 
-    /* Each slide has a background image */
     .carousel-slide img {
       width: 100%; height: 100%; object-fit: cover;
     }
@@ -119,7 +115,6 @@ nav a {
       background: linear-gradient(to right, rgba(0,0,0,.52) 38%, rgba(0,0,0,.1) 70%, transparent);
     }
 
-    /* Hero text */
     .hero-content {
       position: absolute; top: 50%; left: 7%;
       transform: translateY(-50%);
@@ -154,7 +149,6 @@ nav a {
     .btn-outline:hover { background: rgba(201,162,154,.3); }
     .btn-outline .heart { font-size: .85rem; }
 
-    /* Logo placeholder box in hero */
     .hero-logo-box {
       position: absolute; top: 50%; right: 7%;
       transform: translateY(-50%);
@@ -164,7 +158,6 @@ nav a {
       backdrop-filter: blur(2px);
     }
     .hero-logo-box .placeholder-icon { font-size: 2.2rem; opacity: .7; margin-bottom: 10px; }
-    /* If a real logo image is added */
     .hero-logo-box img.hero-logo-img {
       width: 140px; height: auto; object-fit: contain; margin: 0 auto 10px;
     }
@@ -180,7 +173,6 @@ nav a {
       font-size: 1.4rem; transform: rotate(30deg); opacity: .7;
     }
 
-    /* Carousel dots */
     .carousel-dots {
       position: absolute; bottom: 28px; left: 50%;
       transform: translateX(-50%); display: flex; gap: 8px; z-index: 10;
@@ -191,7 +183,6 @@ nav a {
     }
     .dot.active { background: #fff; }
 
-    /* scroll chevron */
     .scroll-hint {
       position: absolute; bottom: 28px; left: 50%;
       transform: translateX(-50%); color: #fff; font-size: 1.4rem;
@@ -227,6 +218,24 @@ nav a {
       display: grid; grid-template-columns: repeat(3,1fr);
       gap: 18px; max-width: 980px; margin: 0 auto 32px;
     }
+
+    /* Fila extra de videos oculta */
+    .video-extra {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 18px; max-width: 980px; margin: 0 auto 32px;
+      /* Animación de despliegue */
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height .55s ease, opacity .45s ease, margin .45s ease;
+      margin-bottom: 0;
+    }
+    .video-extra.expanded {
+      max-height: 600px;
+      opacity: 1;
+      margin-bottom: 32px;
+    }
+
     .video-card {
       position: relative; border-radius: 8px; overflow: hidden;
       aspect-ratio: 16/9; cursor: pointer; background: #111;
@@ -234,7 +243,6 @@ nav a {
     .video-card iframe {
       width: 100%; height: 100%; border: none; display: block;
     }
-    /* Thumbnail overlay for non-played videos */
     .video-thumb {
       position: absolute; inset: 0;
       background: #222; transition: opacity .3s;
@@ -266,6 +274,25 @@ nav a {
       grid-template-columns: repeat(6,1fr);
       gap: 10px; max-width: 980px; margin: 0 auto 32px;
     }
+
+    /* Fila extra de fotos oculta */
+    .photo-extra {
+      display: grid;
+      grid-template-columns: repeat(6,1fr);
+      gap: 10px; max-width: 980px; margin: 0 auto 32px;
+      /* Animación de despliegue */
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height .55s ease, opacity .45s ease, margin .45s ease;
+      margin-bottom: 0;
+    }
+    .photo-extra.expanded {
+      max-height: 600px;
+      opacity: 1;
+      margin-bottom: 32px;
+    }
+
     .photo-card {
       border-radius: 6px; overflow: hidden;
       aspect-ratio: 3/4; cursor: pointer; position: relative;
@@ -433,23 +460,215 @@ nav a {
       .hamburger { display: flex; }
       .hero-logo-box { display: none; }
 
-      .video-grid { grid-template-columns: 1fr; }
-      .photo-grid { grid-template-columns: repeat(3,1fr); }
+      .video-grid,
+      .video-extra { grid-template-columns: 1fr; }
+      .photo-grid,
+      .photo-extra { grid-template-columns: repeat(3,1fr); }
       .mv-grid { grid-template-columns: 1fr; text-align: center; }
       .mv-divider { flex-direction: row; }
       .mv-divider-line { width: 80px; height: 1px; }
       .social-inner { grid-template-columns: 1fr; }
       .social-photos { grid-template-columns: repeat(4,1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+
+      /* Ajuste max-height en mobile para video-extra expandido */
+      .video-extra.expanded { max-height: 1200px; }
     }
 
     @media (max-width: 600px) {
       .hero-content { left: 5%; max-width: 90%; }
-      .photo-grid { grid-template-columns: repeat(2,1fr); }
+      .photo-grid,
+      .photo-extra { grid-template-columns: repeat(2,1fr); }
       .social-photos { grid-template-columns: repeat(2,1fr); }
       .footer-grid { grid-template-columns: 1fr; }
       .video-section, .photo-section, .essence-section, .social-section { padding: 50px 20px; }
       footer { padding: 50px 20px 0; }
+
+      /* Ajuste max-height en mobile pequeño */
+      .video-extra.expanded { max-height: 2000px; }
+      .photo-extra.expanded { max-height: 1200px; }
+    }
+
+    /* ─── SOBRE MÍ ───────────────────────────────────────────── */
+    .about-section {
+      padding: 80px 40px;
+      background: #fff;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      max-width: 980px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .about-img-wrap::before {
+      content: '';
+      position: absolute;
+      top: -18px;
+      left: -18px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--blush-lt);
+      border-radius: 4px;
+      z-index: 0;
+    }
+
+    .about-img-wrap::after {
+      content: '♡';
+      position: absolute;
+      bottom: -22px;
+      right: -14px;
+      font-size: 4.5rem;
+      color: var(--blush-lt);
+      line-height: 1;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .about-img-wrap img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .about-img-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 38%;
+      background: linear-gradient(to top, rgba(176,120,120,.45) 0%, transparent 100%);
+      border-radius: 0 0 4px 4px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .about-badge {
+      position: absolute;
+      top: 22px;
+      right: -20px;
+      background: var(--sage);
+      color: #fff;
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      border-radius: 30px;
+      z-index: 4;
+      box-shadow: 0 4px 14px rgba(122,140,110,.35);
+    }
+
+    .about-text {}
+
+    .about-tag {
+      font-size: .6rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--blush);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .about-tag::after {
+      content: '';
+      flex: 1;
+      max-width: 50px;
+      height: 1px;
+      background: var(--blush-lt);
+    }
+
+    .about-name {
+      font-family: var(--font-script);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      color: var(--dark);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .about-role {
+      font-size: .65rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--light);
+      font-weight: 500;
+      margin-bottom: 26px;
+    }
+
+    .about-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.35;
+      margin-bottom: 20px;
+    }
+
+    .about-headline em {
+      color: var(--blush);
+      font-style: italic;
+    }
+
+    .about-body {
+      font-size: .82rem;
+      line-height: 1.9;
+      color: var(--mid);
+      margin-bottom: 32px;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 34px;
+      padding-top: 24px;
+      border-top: 1px solid var(--blush-lt);
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-number {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: .6rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--light);
+      font-weight: 500;
+    }
+
+    @media (max-width: 900px) {
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+      .about-img-wrap::after { font-size: 3rem; bottom: -16px; right: -8px; }
+      .about-badge { right: 10px; }
+    }
+
+    @media (max-width: 600px) {
+      .about-section { padding: 50px 20px; }
+      .about-img-wrap img { height: 380px; }
+      .about-stats { gap: 20px; }
     }
   </style>
 </head>
@@ -460,12 +679,6 @@ nav a {
 ════════════════════════════════════════════════════ -->
 <header>
   <a class="logo-wrap" href="#">
-    <!--
-      LOGO: Reemplaza la imagen de abajo con tu logo real.
-      El archivo debe estar en la misma carpeta o usa una URL.
-      Ejemplo: <img class="logo-img" src="logo.png" alt="Bella Moments" />
-      Si no tienes imagen, borra el <img> y aparecerá el texto.
-    -->
     <img class="logo-img" src="img/image.webp" alt="Bella Moments"
          style="width:130px;height:auto;object-fit:contain;"
          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
@@ -484,7 +697,7 @@ nav a {
       <a href="#">Blog</a>
       <a href="#">Contacto</a>
     </div>
-    <a href="#" class="btn-cta">Asesoría</a>
+    <a href="https://wa.me/51922675534" target="_blank" class="btn-cta">Asesoría</a>
     <div class="hamburger" id="hamburger" onclick="toggleNav()">
       <span></span><span></span><span></span>
     </div>
@@ -494,9 +707,6 @@ nav a {
 
 <!-- ═══════════════════════════════════════════════════
      HERO CAROUSEL
-     Instrucciones:
-     - Reemplaza src="FOTO_HERO_1.jpg", FOTO_HERO_2.jpg, FOTO_HERO_3.jpg
-       con tus imágenes reales de portada.
 ════════════════════════════════════════════════════ -->
 <section class="hero">
   <div class="carousel" id="carousel">
@@ -524,7 +734,6 @@ nav a {
 
   </div><!-- /carousel -->
 
-  <!-- Hero copy -->
   <div class="hero-content">
     <p class="hero-kicker">Hacemos Real</p>
     <h1 class="hero-title">
@@ -541,17 +750,6 @@ nav a {
     </a>
   </div>
 
-  <!-- Logo placeholder box -->
-  <!-- <div class="hero-logo-box">
-    <div class="arrow-curved">↙</div>
-    <img class="hero-logo-img" src="LOGO_HERO.png" alt="Tu logo"
-         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-    <div class="placeholder-icon" style="display:none;">🖼</div>
-    <p class="logo-label">Tu Logo Aquí</p>
-    <p class="logo-sub">Adaptamos el sitio<br>con tu imagen<br>de marca</p>
-  </div> -->
-
-  <!-- Dots -->
   <div class="carousel-dots" id="carouselDots">
     <div class="dot active" onclick="goToSlide(0)"></div>
     <div class="dot" onclick="goToSlide(1)"></div>
@@ -564,78 +762,131 @@ nav a {
 
 <!-- ═══════════════════════════════════════════════════
      VIDEO GALLERY
-     Instrucciones:
-     - Reemplaza el src de cada <iframe> con la URL de embed de YouTube.
-       Formato: https://www.youtube.com/embed/VIDEO_ID
-     - Reemplaza las imágenes de thumbnail (THUMB_VIDEO_1.jpg etc.)
-       con capturas o miniaturas reales de cada video.
-     - Ajusta las duraciones (1:02, 0:58, 1:15) según tus videos.
 ════════════════════════════════════════════════════ -->
 <section class="video-section" id="videos">
   <p class="section-tag">Galería de Videos</p>
   <h2 class="section-title">Momentos que cobran vida<span class="section-divider"></span></h2>
 
+  <!-- FILA PRINCIPAL (siempre visible) -->
   <div class="video-grid">
 
-    <!-- VIDEO 1 -->
-    <div class="video-card" id="vc1">
-      <div class="video-thumb" id="vt1">
-        <img src="THUMB_VIDEO_1.jpg" alt="Video 1 thumbnail"
-             onerror="this.src='https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80'" />
-        <div class="play-btn" onclick="playVideo(1, 'ID_YOUTUBE_VIDEO_1')">
+  <!-- VIDEO 1 -->
+  <div class="video-card" id="vc1">
+    <div class="video-thumb" id="vt1">
+      <img src="https://img.youtube.com/vi/HuOFcj1iz0k/hqdefault.jpg" alt="Video 1 thumbnail"
+           onerror="this.src='https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80'" />
+      <div class="play-btn" onclick="playVideo(1, 'HuOFcj1iz0k')">
+        <div class="play-circle">
+          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+      </div>
+      <span class="video-duration">--:--</span> <!-- La duración se puede obtener con la API de YouTube -->
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="video-card" id="vc2">
+    <div class="video-thumb" id="vt2">
+      <img src="https://img.youtube.com/vi/gEMBaWNUtKU/hqdefault.jpg" alt="Video 2 thumbnail"
+           onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80'" />
+      <div class="play-btn" onclick="playVideo(2, 'gEMBaWNUtKU')">
+        <div class="play-circle">
+          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+      </div>
+      <span class="video-duration">--:--</span>
+    </div>
+  </div>
+
+  <!-- VIDEO 3 -->
+  <div class="video-card" id="vc3">
+    <div class="video-thumb" id="vt3">
+      <img src="https://img.youtube.com/vi/njmflnq97Dw/hqdefault.jpg" alt="Video 3 thumbnail"
+           onerror="this.src='https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&q=80'" />
+      <div class="play-btn" onclick="playVideo(3, 'njmflnq97Dw')">
+        <div class="play-circle">
+          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+      </div>
+      <span class="video-duration">--:--</span>
+    </div>
+  </div>
+
+</div><!-- /video-grid -->
+
+<script>
+function playVideo(videoNumber, videoId) {
+  // Abre el video de YouTube en una nueva ventana o modal
+  // Opción 1: Abrir en YouTube (nueva pestaña)
+  window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+  
+  // Opción 2: Si quieres incrustarlo en la misma página, puedes usar:
+  // const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+  // window.open(videoUrl, '_blank');
+  
+  console.log(`Reproduciendo video ${videoNumber} con ID: ${videoId}`);
+}
+</script>
+
+  <!-- FILA EXTRA (oculta hasta hacer click en "Ver Más Videos") -->
+  <div class="video-extra" id="videoExtra">
+
+    <!-- VIDEO 4 -->
+    <div class="video-card" id="vc4">
+      <div class="video-thumb" id="vt4">
+        <img src="THUMB_VIDEO_4.jpg" alt="Video 4 thumbnail"
+             onerror="this.src='https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80'" />
+        <div class="play-btn" onclick="playVideo(4, 'ID_YOUTUBE_VIDEO_4')">
           <div class="play-circle">
             <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
           </div>
         </div>
-        <span class="video-duration">1:02</span>
+        <span class="video-duration">1:20</span>
       </div>
-      <!-- El iframe se inserta dinámicamente al hacer click -->
     </div>
 
-    <!-- VIDEO 2 -->
-    <div class="video-card" id="vc2">
-      <div class="video-thumb" id="vt2">
-        <img src="THUMB_VIDEO_2.jpg" alt="Video 2 thumbnail"
-             onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80'" />
-        <div class="play-btn" onclick="playVideo(2, 'ID_YOUTUBE_VIDEO_2')">
+    <!-- VIDEO 5 -->
+    <div class="video-card" id="vc5">
+      <div class="video-thumb" id="vt5">
+        <img src="THUMB_VIDEO_5.jpg" alt="Video 5 thumbnail"
+             onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80'" />
+        <div class="play-btn" onclick="playVideo(5, 'ID_YOUTUBE_VIDEO_5')">
           <div class="play-circle">
             <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
           </div>
         </div>
-        <span class="video-duration">0:58</span>
+        <span class="video-duration">0:45</span>
       </div>
     </div>
 
-    <!-- VIDEO 3 -->
-    <div class="video-card" id="vc3">
-      <div class="video-thumb" id="vt3">
-        <img src="THUMB_VIDEO_3.jpg" alt="Video 3 thumbnail"
-             onerror="this.src='https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&q=80'" />
-        <div class="play-btn" onclick="playVideo(3, 'ID_YOUTUBE_VIDEO_3')">
+    <!-- VIDEO 6 -->
+    <div class="video-card" id="vc6">
+      <div class="video-thumb" id="vt6">
+        <img src="THUMB_VIDEO_6.jpg" alt="Video 6 thumbnail"
+             onerror="this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80'" />
+        <div class="play-btn" onclick="playVideo(6, 'ID_YOUTUBE_VIDEO_6')">
           <div class="play-circle">
             <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
           </div>
         </div>
-        <span class="video-duration">1:15</span>
+        <span class="video-duration">1:30</span>
       </div>
     </div>
 
-  </div><!-- /video-grid -->
+  </div><!-- /video-extra -->
 
-  <a href="#" class="btn-border">Ver Más Videos</a>
+  <a href="#" class="btn-border" id="btnVerVideos" onclick="toggleVideos(event)">Ver Más Videos</a>
 </section>
 
 
 <!-- ═══════════════════════════════════════════════════
      PHOTO GALLERY
-     Instrucciones:
-     - Reemplaza FOTO_GALERIA_1.jpg … FOTO_GALERIA_6.jpg
-       con las fotos reales de tu galería.
 ════════════════════════════════════════════════════ -->
 <section class="photo-section" id="galeria">
   <p class="section-tag">Galería de Fotos</p>
   <h2 class="section-title">Cada detalle, cada emoción<span class="section-divider"></span></h2>
 
+  <!-- FILA PRINCIPAL (siempre visible) -->
   <div class="photo-grid">
 
     <div class="photo-card" onclick="openLightbox(this)">
@@ -663,9 +914,92 @@ nav a {
            onerror="this.src='https://images.unsplash.com/photo-1601979031925-424e53b6caaa?w=600&q=80'" />
     </div>
 
-  </div>
+  </div><!-- /photo-grid -->
 
-  <a href="#" class="btn-border">Ver Más Fotos</a>
+  <!-- FILA EXTRA (oculta hasta hacer click en "Ver Más Fotos") -->
+  <div class="photo-extra" id="photoExtra">
+
+    <div class="photo-card" onclick="openLightbox(this)">
+      <img src="img/Foto primeras novias Yesenia 25.11.webp" alt="Galería 7"
+           onerror="this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80'" />
+    </div>
+    <div class="photo-card" onclick="openLightbox(this)">
+      <img src="img/foto con novia Karen 24.08.webp" alt="Galería 8"
+           onerror="this.src='https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&q=80'" />
+    </div>
+    <div class="photo-card" onclick="openLightbox(this)">
+      <img src="img/Foto 1ra. boda como WP 22.7.webp" alt="Galería 9"
+           onerror="this.src='https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80'" />
+    </div>
+    <div class="photo-card" onclick="openLightbox(this)">
+      <img src="img/Diapos foto 51.webp" alt="Galería 10"
+           onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80'" />
+    </div>
+    <div class="photo-card" onclick="openLightbox(this)">
+      <img src="img/Diapos foto 47.webp" alt="Galería 11"
+           onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&q=80'" />
+    </div>
+    <div class="photo-card" onclick="openLightbox(this)">
+      <img src="img/Diapos foto 37.webp" alt="Galería 12"
+           onerror="this.src='https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80'" />
+    </div>
+
+  </div><!-- /photo-extra -->
+
+  <a href="#" class="btn-border" id="btnVerFotos" onclick="toggleFotos(event)">Ver Más Fotos</a>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SOBRE MÍ
+════════════════════════════════════════════════════ -->
+<section class="about-section">
+  <div class="about-inner">
+
+    <div class="about-img-wrap">
+      <img src="img/Consuelo en iglesia.webp" alt="Consuelo Mestanza – Wedding Planner"
+           onerror="this.src='https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80'" />
+      <div class="about-img-overlay"></div>
+      <span class="about-badge">Wedding Planner</span>
+    </div>
+
+    <div class="about-text">
+      <p class="about-tag">Sobre mí</p>
+      <h2 class="about-name">Consuelo Mestanza</h2>
+      <p class="about-role">Wedding &amp; Event Planner · Lima, Perú</p>
+
+      <p class="about-headline">
+        Porque el amor merece<br>
+        <em>una historia perfecta.</em>
+      </p>
+
+      <p class="about-body">
+        Soy Consuelo Mestanza, wedding planner con el propósito de convertir cada boda en una obra maestra. Creo que detrás de cada pareja hay una historia única, y mi misión es contarla con cada flor, cada luz y cada instante cuidado al detalle.<br><br>
+        Acompaño a novios desde la primera idea hasta el último baile, con total dedicación, comunicación transparente y la calma que solo da la experiencia. Tu único trabajo ese día es emocionarte — el resto lo hago yo.
+      </p>
+
+      <div class="about-stats">
+        <div class="stat-item">
+          <p class="stat-number">+65</p>
+          <p class="stat-label">Bodas realizadas</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-number">10/10★</p>
+          <p class="stat-label">Valoración promedio</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-number">100%</p>
+          <p class="stat-label">Novios felices</p>
+        </div>
+      </div>
+
+      <a href="https://wa.me/51922675534" target="_blank" class="btn-cta"
+         style="display:inline-block; text-decoration:none;">
+        Hablemos de tu boda ♡
+      </a>
+    </div>
+
+  </div>
 </section>
 
 
@@ -676,7 +1010,6 @@ nav a {
   <p class="section-tag">Nuestra Esencia</p>
 
   <div class="mv-grid">
-    <!-- MISIÓN -->
     <div class="mv-item">
       <div class="mv-icon">♡</div>
       <h3 class="mv-title">Misión</h3>
@@ -686,14 +1019,12 @@ nav a {
       </p>
     </div>
 
-    <!-- Divider -->
     <div class="mv-divider">
       <div class="mv-divider-line"></div>
       <span class="mv-heart">♡</span>
       <div class="mv-divider-line"></div>
     </div>
 
-    <!-- VISIÓN -->
     <div class="mv-item">
       <div class="mv-icon">👁</div>
       <h3 class="mv-title">Visión</h3>
@@ -708,11 +1039,6 @@ nav a {
 
 <!-- ═══════════════════════════════════════════════════
      REDES SOCIALES
-     Instrucciones:
-     - Reemplaza FOTO_SOCIAL_1.jpg … FOTO_SOCIAL_4.jpg
-       con capturas reales de tu Instagram / redes.
-     - Actualiza los handles (@bellamoments.wp) con los tuyos.
-     - Actualiza los href de cada red social con tu URL real.
 ════════════════════════════════════════════════════ -->
 <section class="social-section">
   <div class="social-inner">
@@ -735,7 +1061,7 @@ nav a {
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
           </svg>
-          @Consuelo Mestanza Wedding & Event Planner
+          @Consuelo Mestanza Wedding &amp; Event Planner
         </a>
         <!-- TikTok -->
         <a href="https://www.tiktok.com/@consuelomestanzawp?_r=1&_t=ZS-965JhdZLQmb" target="_blank">
@@ -744,13 +1070,6 @@ nav a {
           </svg>
           @consuelomestanzawp
         </a>
-        <!-- Pinterest -->
-        <!-- <a href="https://pinterest.com/bellamoments.wp" target="_blank">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.08 3.16 9.43 7.64 11.17-.1-.97-.2-2.46.04-3.52.22-.95 1.48-6.27 1.48-6.27s-.38-.76-.38-1.88c0-1.76 1.02-3.08 2.28-3.08 1.08 0 1.6.81 1.6 1.78 0 1.08-.69 2.7-1.05 4.21-.3 1.26.62 2.28 1.86 2.28 2.23 0 3.95-2.35 3.95-5.75 0-3.01-2.16-5.11-5.25-5.11-3.57 0-5.67 2.68-5.67 5.45 0 1.08.42 2.23.94 2.86.1.12.11.23.08.35-.1.39-.31 1.26-.35 1.43-.05.23-.18.28-.4.17-1.5-.7-2.44-2.88-2.44-4.64 0-3.77 2.74-7.24 7.9-7.24 4.15 0 7.37 2.96 7.37 6.91 0 4.12-2.6 7.43-6.2 7.43-1.21 0-2.35-.63-2.74-1.37l-.74 2.78c-.27 1.04-1 2.34-1.49 3.14C10.73 23.92 11.36 24 12 24c6.63 0 12-5.37 12-12S18.63 0 12 0z"/>
-          </svg>
-          @bellamoments.wp
-        </a> -->
       </div>
     </div>
 
@@ -782,7 +1101,6 @@ nav a {
 <footer>
   <div class="footer-grid">
 
-    <!-- Brand -->
     <div class="footer-brand">
       <div class="logo-text">
         <span class="brand">Consuelo Mestanza</span>
@@ -793,7 +1111,6 @@ nav a {
       </p>
     </div>
 
-    <!-- Links -->
     <div class="footer-col">
       <h4>Enlaces</h4>
       <ul>
@@ -806,7 +1123,6 @@ nav a {
       </ul>
     </div>
 
-    <!-- Services -->
     <div class="footer-col">
       <h4>Servicios</h4>
       <ul>
@@ -818,21 +1134,20 @@ nav a {
       </ul>
     </div>
 
-    <!-- Contact -->
     <div class="footer-col">
       <h4>Contáctanos</h4>
       <ul class="footer-contact">
-        <li><span class="icon">📞</span> +51 999 999 999</li>
-        <li><span class="icon">✉</span> hola@bellamoments.com</li>
+        <li><span class="icon">📞</span> +51 922675534</li>
+        <li><span class="icon">✉</span> consuelodelrocio20.gmail.com</li>
         <li><span class="icon">📍</span> Todo el Perú</li>
       </ul>
-      <a href="#" class="btn-cta-footer">Empieza ahora</a>
+      <a href="#" class="btn-cta-footer">Agenda tu Asesoría</a>
     </div>
 
   </div><!-- /footer-grid -->
 
   <div class="footer-bottom">
-    <span>© 2024 Consuelo Mestanza Wedding Planner. Todos los derechos reservados.</span>
+    <span>© 2026 Consuelo Mestanza Wedding Planner. Todos los derechos reservados.</span>
     <span>Diseñado con ♡ para historias de amor</span>
   </div>
 </footer>
@@ -840,7 +1155,6 @@ nav a {
 
 <!-- ═══════════════════════════════════════════════════
      WHATSAPP FLOATING BUTTON
-     Instrucciones: Reemplaza el número en el href
 ════════════════════════════════════════════════════ -->
 <a class="whatsapp-btn" href="https://wa.me/51922675534" target="_blank">
   <svg viewBox="0 0 24 24">
@@ -883,7 +1197,6 @@ nav a {
     autoTimer = setInterval(nextSlide, 5000);
   }
 
-  // Pause on hover
   document.getElementById('carousel').addEventListener('mouseenter', () => clearInterval(autoTimer));
   document.getElementById('carousel').addEventListener('mouseleave', startAuto);
 
@@ -896,11 +1209,7 @@ nav a {
   }
 
 
-  /* ── VIDEO PLAY ──
-     Cuando el usuario hace click en play, reemplaza el thumbnail
-     con un iframe de YouTube en autoplay.
-     Parámetro videoId: reemplaza ID_YOUTUBE_VIDEO_N con el ID real.
-  */
+  /* ── VIDEO PLAY ── */
   function playVideo(num, videoId) {
     const thumb = document.getElementById('vt' + num);
     const card  = document.getElementById('vc' + num);
@@ -911,6 +1220,43 @@ nav a {
     iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;';
     thumb.style.display = 'none';
     card.appendChild(iframe);
+  }
+
+
+  /* ── VER MÁS VIDEOS ── */
+  let videosExpanded = false;
+
+  function toggleVideos(e) {
+    e.preventDefault();
+    const extra = document.getElementById('videoExtra');
+    const btn   = document.getElementById('btnVerVideos');
+
+    videosExpanded = !videosExpanded;
+    extra.classList.toggle('expanded', videosExpanded);
+    btn.textContent = videosExpanded ? 'Ver Menos Videos' : 'Ver Más Videos';
+
+    // Si se cierra, hacer scroll suave de vuelta a la sección
+    if (!videosExpanded) {
+      document.getElementById('videos').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+
+  /* ── VER MÁS FOTOS ── */
+  let fotosExpanded = false;
+
+  function toggleFotos(e) {
+    e.preventDefault();
+    const extra = document.getElementById('photoExtra');
+    const btn   = document.getElementById('btnVerFotos');
+
+    fotosExpanded = !fotosExpanded;
+    extra.classList.toggle('expanded', fotosExpanded);
+    btn.textContent = fotosExpanded ? 'Ver Menos Fotos' : 'Ver Más Fotos';
+
+    if (!fotosExpanded) {
+      document.getElementById('galeria').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
 
@@ -925,7 +1271,6 @@ nav a {
     document.getElementById('lightbox').classList.remove('open');
     document.body.style.overflow = '';
   }
-  // ESC to close
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
 
