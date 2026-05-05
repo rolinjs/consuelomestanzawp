@@ -828,54 +828,7 @@ function playVideo(videoNumber, videoId) {
 }
 </script>
 
-  <!-- FILA EXTRA (oculta hasta hacer click en "Ver Más Videos") -->
-  <div class="video-extra" id="videoExtra">
-
-    <!-- VIDEO 4 -->
-    <div class="video-card" id="vc4">
-      <div class="video-thumb" id="vt4">
-        <img src="THUMB_VIDEO_4.jpg" alt="Video 4 thumbnail"
-             onerror="this.src='https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80'" />
-        <div class="play-btn" onclick="playVideo(4, 'ID_YOUTUBE_VIDEO_4')">
-          <div class="play-circle">
-            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-          </div>
-        </div>
-        <span class="video-duration">1:20</span>
-      </div>
-    </div>
-
-    <!-- VIDEO 5 -->
-    <div class="video-card" id="vc5">
-      <div class="video-thumb" id="vt5">
-        <img src="THUMB_VIDEO_5.jpg" alt="Video 5 thumbnail"
-             onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80'" />
-        <div class="play-btn" onclick="playVideo(5, 'ID_YOUTUBE_VIDEO_5')">
-          <div class="play-circle">
-            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-          </div>
-        </div>
-        <span class="video-duration">0:45</span>
-      </div>
-    </div>
-
-    <!-- VIDEO 6 -->
-    <div class="video-card" id="vc6">
-      <div class="video-thumb" id="vt6">
-        <img src="THUMB_VIDEO_6.jpg" alt="Video 6 thumbnail"
-             onerror="this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80'" />
-        <div class="play-btn" onclick="playVideo(6, 'ID_YOUTUBE_VIDEO_6')">
-          <div class="play-circle">
-            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-          </div>
-        </div>
-        <span class="video-duration">1:30</span>
-      </div>
-    </div>
-
-  </div><!-- /video-extra -->
-
-  <a href="#" class="btn-border" id="btnVerVideos" onclick="toggleVideos(event)">Ver Más Videos</a>
+  
 </section>
 
 
@@ -984,7 +937,7 @@ function playVideo(videoNumber, videoId) {
           <p class="stat-label">Bodas realizadas</p>
         </div>
         <div class="stat-item">
-          <p class="stat-number">10/10★</p>
+          <p class="stat-number">10★</p>
           <p class="stat-label">Valoración promedio</p>
         </div>
         <div class="stat-item">
@@ -1226,20 +1179,20 @@ function playVideo(videoNumber, videoId) {
   /* ── VER MÁS VIDEOS ── */
   let videosExpanded = false;
 
-  function toggleVideos(e) {
-    e.preventDefault();
-    const extra = document.getElementById('videoExtra');
-    const btn   = document.getElementById('btnVerVideos');
+  // function toggleVideos(e) {
+  //   e.preventDefault();
+  //   const extra = document.getElementById('videoExtra');
+  //   const btn   = document.getElementById('btnVerVideos');
 
-    videosExpanded = !videosExpanded;
-    extra.classList.toggle('expanded', videosExpanded);
-    btn.textContent = videosExpanded ? 'Ver Menos Videos' : 'Ver Más Videos';
+  //   videosExpanded = !videosExpanded;
+  //   extra.classList.toggle('expanded', videosExpanded);
+  //   btn.textContent = videosExpanded ? 'Ver Menos Videos' : 'Ver Más Videos';
 
-    // Si se cierra, hacer scroll suave de vuelta a la sección
-    if (!videosExpanded) {
-      document.getElementById('videos').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+  //   // Si se cierra, hacer scroll suave de vuelta a la sección
+  //   if (!videosExpanded) {
+  //     document.getElementById('videos').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  //   }
+  // }
 
 
   /* ── VER MÁS FOTOS ── */
