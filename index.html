@@ -427,6 +427,86 @@
     }
     .btn-border:hover { background: var(--dark); color: #fff; }
 
+    /* ─── SERVICIOS ───────────────────────────────────────────────── */
+    .services-section { padding: 70px 40px; background: #fff; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+      max-width: 1080px;
+      margin: 0 auto 30px;
+    }
+
+    .service-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--cream);
+      border: 1px solid var(--blush-lt);
+      border-radius: 8px;
+      padding: 32px 28px;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(176,120,120,.16);
+    }
+
+    .service-icon {
+      width: 50px; height: 50px; border-radius: 50%;
+      border: 1.5px solid var(--blush);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; color: var(--rose);
+      margin-bottom: 20px;
+    }
+
+    .service-name {
+      font-family: var(--font-serif);
+      font-size: 1.4rem; font-weight: 600;
+      color: var(--dark); margin-bottom: 4px; line-height: 1.2;
+    }
+
+    .service-tagline {
+      font-size: .72rem; font-style: italic; color: var(--rose);
+      margin-bottom: 16px;
+    }
+
+    .service-desc {
+      font-size: .82rem; line-height: 1.75; color: var(--mid);
+      flex-grow: 1; margin-bottom: 22px;
+    }
+
+    .service-quote {
+      font-size: .8rem; font-style: italic; color: var(--dark);
+      border-left: 2px solid var(--blush); padding-left: 12px;
+      margin-bottom: 24px; line-height: 1.6;
+    }
+
+    .btn-cotizar {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--sage); color: #fff;
+      font-size: .68rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; padding: 13px 0; border-radius: 30px;
+      border: none; cursor: pointer; transition: background .25s;
+      text-decoration: none; margin-top: auto;
+    }
+    .btn-cotizar:hover { background: #5e6e52; }
+
+    .services-cta {
+      text-align: center; max-width: 600px; margin: 10px auto 0;
+    }
+    .services-cta p {
+      font-size: .88rem; color: var(--mid); line-height: 1.7; margin-bottom: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .services-section { padding: 50px 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
     /* ─── MISSION / VISION ────────────────────────────────────────── */
     .essence-section { padding: 70px 40px; background: #fff; }
     .essence-section .section-tag { margin-bottom: 40px; }
@@ -833,7 +913,7 @@
      HEADER
 ════════════════════════════════════════════════════ -->
 <header>
-  <a class="logo-wrap" href="#">
+  <a class="logo-wrap" href="#inicio">
     <img class="logo-img" src="img/LOGO PRINCIPAL SIN FONDO-03.png" alt="Bella Moments"
          style="width:130px;height:auto;object-fit:contain;"
          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
@@ -845,12 +925,11 @@
 
   <nav>
     <div class="nav-links" id="navLinks">
-      <a href="#">Inicio</a>
-      <a href="#">Sobre Nosotros</a>
-      <a href="#">Servicios</a>
-      <a href="#">Galería</a>
-      <a href="#">Blog</a>
-      <a href="#">Contacto</a>
+      <a href="#inicio">Inicio</a>
+      <a href="#sobre-nosotros">Sobre Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto">Contacto</a>
     </div>
     <a href="https://wa.me/51922675534" target="_blank" class="btn-cta">Asesoría</a>
     <div class="hamburger" id="hamburger" onclick="toggleNav()">
@@ -863,7 +942,7 @@
 <!-- ═══════════════════════════════════════════════════
      HERO CAROUSEL
 ════════════════════════════════════════════════════ -->
-<section class="hero">
+<section class="hero" id="inicio">
   <div class="carousel" id="carousel">
 
     <!-- SLIDE 1 -->
@@ -1033,9 +1112,84 @@
 
 
 <!-- ═══════════════════════════════════════════════════
+     SERVICIOS
+════════════════════════════════════════════════════ -->
+<section class="services-section" id="servicios">
+  <p class="section-tag">Servicios</p>
+  <h2 class="section-title">Diseñados para acompañarte en cada etapa<span class="section-divider"></span></h2>
+
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-icon">♡</div>
+      <h3 class="service-name">Wedding Planning Integral</h3>
+      <p class="service-tagline">De la ilusión inicial a una celebración perfectamente coordinada</p>
+      <p class="service-desc">
+        Acompañamiento profesional durante todo el proceso: desde las primeras decisiones hasta la ejecución final. Definimos juntos prioridades, presupuesto, estilo y proveedores, con una visión estratégica y coordinación constante para que disfrutes el proceso tanto como el día de tu boda.
+      </p>
+      <a href="https://wa.me/51922675534?text=Hola%20Consuelo%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Wedding%20Planning%20Integral%20%E2%99%A1"
+         target="_blank" class="btn-cotizar">Cotizar este servicio</a>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">♡</div>
+      <h3 class="service-name">Organización Parcial de Boda</h3>
+      <p class="service-tagline">Ordenamos y consolidamos lo que ya has avanzado</p>
+      <p class="service-desc">
+        Ideal si ya tienes locación, iglesia o catering definidos pero necesitas guía para lo demás. Revisamos lo contratado, identificamos pendientes y construimos una ruta clara para que cada elemento funcione coordinado, llegando al gran día con la tranquilidad de saber que todo está bien organizado.
+      </p>
+      <a href="https://wa.me/51922675534?text=Hola%20Consuelo%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Organizaci%C3%B3n%20Parcial%20de%20Boda%20%E2%99%A1"
+         target="_blank" class="btn-cotizar">Cotizar este servicio</a>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">♡</div>
+      <h3 class="service-name">Wedding Month</h3>
+      <p class="service-tagline">Acompañamiento estratégico durante el último mes</p>
+      <p class="service-desc">
+        Pensado para parejas que llevan casi el 90% de su boda organizada y quieren apoyo profesional en las últimas semanas: revisión de proveedores, cronograma detallado, supervisión y dirección integral el día de la boda. El último mes debería ser para disfrutar, no para estresarse.
+      </p>
+      <a href="https://wa.me/51922675534?text=Hola%20Consuelo%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Wedding%20Month%20%E2%99%A1"
+         target="_blank" class="btn-cotizar">Cotizar este servicio</a>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">♡</div>
+      <h3 class="service-name">Destination Wedding</h3>
+      <p class="service-tagline">Tu boda, donde siempre la imaginaste</p>
+      <p class="service-desc">
+        Coordinamos distancias, tiempos, logística, visitas técnicas y proveedores locales para que puedas planificar tu boda con tranquilidad sin importar dónde se celebre. Me encargo de que cada elemento funcione de forma organizada, cuidando tu experiencia y la de tus invitados.
+      </p>
+      <a href="https://wa.me/51922675534?text=Hola%20Consuelo%2C%20me%20interesa%20cotizar%20el%20servicio%20de%20Destination%20Wedding%20%E2%99%A1"
+         target="_blank" class="btn-cotizar">Cotizar este servicio</a>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">♡</div>
+      <h3 class="service-name">Asesorías Personalizadas</h3>
+      <p class="service-tagline">Claridad para tomar mejores decisiones</p>
+      <p class="service-desc">
+        Una sesión enfocada en resolver dudas específicas: prioridades, presupuesto, evaluación de proveedores, cronograma, revisión de propuestas y contratos, logística y protocolo. El objetivo es ayudarte a decidir con seguridad y avanzar sin errores comunes.
+      </p>
+      <p class="service-quote">"Una sola conversación puede ahorrarte semanas de incertidumbre."</p>
+      <a href="https://wa.me/51922675534?text=Hola%20Consuelo%2C%20me%20interesa%20agendar%20una%20Asesor%C3%ADa%20Personalizada%20%E2%99%A1"
+         target="_blank" class="btn-cotizar">Agendar asesoría</a>
+    </div>
+
+  </div>
+
+  <div class="services-cta">
+    <p>¿Tienes dudas o no sabes por dónde empezar? Conversemos y encontremos juntos la mejor ruta para tu boda.</p>
+    <a href="https://wa.me/51922675534?text=Hola%20Consuelo%2C%20quisiera%20conversar%20sobre%20mi%20boda%20%E2%99%A1"
+       target="_blank" class="btn-cta">¿Lista para empezar? Conversemos ♡</a>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
      SOBRE MÍ
 ════════════════════════════════════════════════════ -->
-<section class="about-section">
+<section class="about-section" id="sobre-nosotros">
   <div class="about-inner">
 
     <div class="about-img-wrap">
@@ -1181,7 +1335,7 @@
 <!-- ═══════════════════════════════════════════════════
      FOOTER
 ════════════════════════════════════════════════════ -->
-<footer>
+<footer id="contacto">
   <div class="footer-grid">
 
     <div class="footer-brand">
@@ -1197,22 +1351,20 @@
     <div class="footer-col">
       <h4>Enlaces</h4>
       <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Sobre nosotros</a></li>
-        <li><a href="#">Servicios</a></li>
-        <li><a href="#">Galería</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#galeria">Galería</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
       <h4>Servicios</h4>
       <ul>
-        <li><a href="#">Wedding Planning Integral</a></li>
-        <li><a href="#">Wedding Day</a></li>
-        <li><a href="#">Bodas Destino</a></li>
-        <li><a href="#">Asesoría personalizada</a></li>
+        <li><a href="#servicios">Wedding Planning Integral</a></li>
+        <li><a href="#servicios">Wedding Month</a></li>
+        <li><a href="#servicios">Bodas Destino</a></li>
+        <li><a href="#servicios">Asesoría personalizada</a></li>
       </ul>
     </div>
 
@@ -1220,10 +1372,10 @@
       <h4>Contáctanos</h4>
       <ul class="footer-contact">
         <li><span class="icon"></span> +51 922675534</li>
-        <li><span class="icon"></span> consuelodelrocio20@.gmail.com</li>
+        <li><span class="icon"></span> consuelodelrocio20@gmail.com</li>
         <!-- <li><span class="icon"></span> Todo el Perú</li> -->
       </ul>
-      <a href="#" class="btn-cta-footer">Agenda tu Asesoría</a>
+      <a href="https://wa.me/51922675534?text=Hola%20Consuelo%2C%20quisiera%20agendar%20una%20asesor%C3%ADa%20%E2%99%A1" target="_blank" class="btn-cta-footer">Agenda tu Asesoría</a>
     </div>
 
   </div>
@@ -1289,6 +1441,13 @@
   function toggleNav() {
     document.getElementById('navLinks').classList.toggle('open');
   }
+
+  // Cierra el menú móvil al hacer click en un enlace
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
 
 
   /* ── VIDEO PLAY ── */
