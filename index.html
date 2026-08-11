@@ -507,6 +507,60 @@
       .services-grid { grid-template-columns: 1fr; }
     }
 
+    /* ─── OTRAS CELEBRACIONES ────────────────────────────────────── */
+    .celebraciones-section { padding: 70px 40px; background: var(--cream); }
+
+    .celebraciones-phrase {
+      max-width: 640px; margin: 0 auto 44px; text-align: center;
+      font-family: var(--font-serif); font-style: italic;
+      font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+      color: var(--rose); line-height: 1.7;
+    }
+
+    .celebraciones-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+      max-width: 1080px;
+      margin: 0 auto 34px;
+    }
+
+    .celebracion-chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      background: #fff;
+      border: 1px solid var(--blush-lt);
+      border-radius: 8px;
+      padding: 26px 14px;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .celebracion-chip:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(176,120,120,.16);
+    }
+    .celebracion-icon {
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1.5px solid var(--blush);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--rose); flex-shrink: 0;
+    }
+    .celebracion-name {
+      font-family: var(--font-serif);
+      font-size: 1.05rem; font-weight: 600;
+      color: var(--dark); line-height: 1.25;
+    }
+
+    @media (max-width: 900px) {
+      .celebraciones-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .celebraciones-section { padding: 50px 20px; }
+      .celebraciones-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
     /* ─── MISSION / VISION ────────────────────────────────────────── */
     .essence-section { padding: 70px 40px; background: #fff; }
     .essence-section .section-tag { margin-bottom: 40px; }
@@ -928,6 +982,7 @@
       <a href="#inicio">Inicio</a>
       <a href="#sobre-nosotros">Sobre Nosotros</a>
       <a href="#servicios">Servicios</a>
+      <a href="#otras-celebraciones">Otros</a>
       <a href="#galeria">Galería</a>
       <a href="#contacto">Contacto</a>
     </div>
@@ -1187,6 +1242,68 @@
 
 
 <!-- ═══════════════════════════════════════════════════
+     OTRAS CELEBRACIONES
+════════════════════════════════════════════════════ -->
+<section class="celebraciones-section" id="otras-celebraciones">
+  <p class="section-tag">Otros</p>
+  <h2 class="section-title">Celebraciones que continúan escribiendo historias<span class="section-divider"></span></h2>
+
+  <p class="celebraciones-phrase">
+    Algunas historias no terminan el día de la boda… continúan con nuevos capítulos que también merecen ser celebrados.
+  </p>
+
+  <div class="celebraciones-grid">
+    <div class="celebracion-chip">
+      <div class="celebracion-icon">♡</div>
+      <p class="celebracion-name">Bautizos</p>
+    </div>
+    <div class="celebracion-chip">
+      <div class="celebracion-icon">♡</div>
+      <p class="celebracion-name">Baby Shower</p>
+    </div>
+    <div class="celebracion-chip">
+      <div class="celebracion-icon">♡</div>
+      <p class="celebracion-name">Aniversarios</p>
+    </div>
+    <div class="celebracion-chip">
+      <div class="celebracion-icon">♡</div>
+      <p class="celebracion-name">Renovación de Votos</p>
+    </div>
+    <div class="celebracion-chip">
+      <div class="celebracion-icon">♡</div>
+      <p class="celebracion-name">Bodas de Plata</p>
+    </div>
+    <div class="celebracion-chip">
+      <div class="celebracion-icon">♡</div>
+      <p class="celebracion-name">Bodas de Oro</p>
+    </div>
+    <div class="celebracion-chip">
+      <div class="celebracion-icon">♡</div>
+      <p class="celebracion-name">Quinceañeros</p>
+    </div>
+    <div class="celebracion-chip">
+      <div class="celebracion-icon">♡</div>
+      <p class="celebracion-name">Lanzamiento de Marca</p>
+    </div>
+    <div class="celebracion-chip">
+      <div class="celebracion-icon">♡</div>
+      <p class="celebracion-name">Corporativos</p>
+    </div>
+    <div class="celebracion-chip">
+      <div class="celebracion-icon">♡</div>
+      <p class="celebracion-name">Cumpleaños</p>
+    </div>
+  </div>
+
+  <div class="services-cta">
+    <p>¿Tienes en mente una celebración especial? Conversemos y hagamos de ese momento algo inolvidable.</p>
+    <a href="https://wa.me/51922675534?text=Hola%20Consuelo%2C%20quisiera%20consultar%20por%20la%20organizaci%C3%B3n%20de%20una%20celebraci%C3%B3n%20especial%20%E2%99%A1"
+       target="_blank" class="btn-cta">Cuéntame tu celebración ♡</a>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
      SOBRE MÍ
 ════════════════════════════════════════════════════ -->
 <section class="about-section" id="sobre-nosotros">
@@ -1354,6 +1471,7 @@
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
         <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#otras-celebraciones">Otras celebraciones</a></li>
         <li><a href="#galeria">Galería</a></li>
       </ul>
     </div>
